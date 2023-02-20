@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ActiveImport;
 use App\Imports\CardinalImport;
 use App\Models\ActiveProductListing;
 use App\Models\AuburnPharmaceutical;
 use App\Models\CardinalHealth;
 use App\Models\ExportAllProduct;
+use App\Models\FDA;
 use App\Models\FileCategory;
 use App\Models\TrendingProduct;
 use Carbon\Carbon;
@@ -39,18 +41,13 @@ class UploadFileController extends Controller
         unset($data['_token']);
         $this->message = 'Something went wrong';
         if (!empty($data)) {
-            ActiveProductListing::truncate();
-            CardinalHealth::truncate();
-            ExportAllProduct::truncate();
-            TrendingProduct::truncate();
-            AuburnPharmaceutical::truncate();
             ini_set('max_execution_time', '0');
             ini_set('memory_limit', '-1');
             if (!empty($data['active_product_listing'])) {
                 $this->activeProductListing($request);
             }
             if (!empty($data['cardinal_health'])) {
-                Excel::import(new CardinalImport(), $request->file('cardinal_health'));
+                $this->cardinalHealth($request);
             }
             if (!empty($data['export_all'])) {
                 $this->exportAll($request);
@@ -61,7 +58,7 @@ class UploadFileController extends Controller
             if (!empty($data['auburn_pharmaceutical'])) {
                 $this->auburnPharmaceutical($request);
             }
-            $this->prepareDataForGoogleSheet();
+            $this->prepareDataForGoogleSheet($data);
             $this->success = true;
             $this->message = 'Files uploaded successfully';
         }
@@ -79,15 +76,25 @@ class UploadFileController extends Controller
         $rows = Excel::toArray(new FileCategory(), $request->file('active_product_listing'));
         $arrProductListing = [];
         $count = 0;
-        foreach (array_chunk($rows[0], 1) as $t) {
-            foreach ($t as $key => $row) {
-                if (!empty($row[1])) {
-                    $arrProductListing[$count]['desc_one'] = isset($row[1]) ? $row[1] : '';
-                    $arrProductListing[$count]['vendor'] = isset($row[5]) ? $row[5] : '';
-                    $arrProductListing[$count]['ndc'] = isset($row[6]) ? $row[6] : '';
-                    $arrProductListing[$count]['list_price'] = isset($row[4]) ? $row[4] : '';
-                    $arrProductListing[$count]['gpw'] = 'Gpw';
+        foreach ($rows[0] as $key => $row) {
+            if (!empty($row[6])) {
+                $ndc = str_replace('-', '', $row[6]);
+                $fdaData = FDA::where('ndc_match', $ndc)->first();
+                if (!empty($fdaData)) {
+                    $fdaData = $fdaData->toArray();
                 }
+                $arrProductListing[$count]['desc_one'] = isset($row[1]) ? $row[1] : '';
+                $arrProductListing[$count]['vendor'] = isset($row[5]) ? $row[5] : '';
+                $arrProductListing[$count]['ndc'] = isset($row[6]) ? $row[6] : '';
+                $arrProductListing[$count]['list_price'] = isset($row[4]) ? $row[4] : '';
+                $arrProductListing[$count]['name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
+                $arrProductListing[$count]['strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
+                $arrProductListing[$count]['form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrProductListing[$count]['count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
+                $arrProductListing[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
+                $arrProductListing[$count]['gpw'] = 'Gpw';
+                $arrProductListing[$count]['created_at'] = now();
+                $arrProductListing[$count]['updated_at'] = now();
             }
             $count++;
         }
@@ -108,32 +115,42 @@ class UploadFileController extends Controller
     public function cardinalHealth($request)
     {
         $rows = Excel::toArray(new FileCategory(), $request->file('cardinal_health'));
-        $arrProductListing = [];
+        $arrCardinal = [];
         $count = 0;
-        foreach (array_chunk($rows[0], 1) as $t) {
-            foreach ($t as $key => $row) {
-                if (!empty($row[1])) {
-                    $arrProductListing[$count]['cin_ndc_upc'] = isset($row[0]) ? $row[0] : '';
-                    $arrProductListing[$count]['cin_ndc_upc1'] = isset($row[1]) ? $row[1] : '';
-                    $arrProductListing[$count]['trade_name_mfr'] = isset($row[2]) ? $row[2] : '';
-                    $arrProductListing[$count]['trade_name_mfr2'] = isset($row[3]) ? $row[3] : '';
-                    $arrProductListing[$count]['strength'] = isset($row[4]) ? $row[4] : '';
-                    $arrProductListing[$count]['from'] = isset($row[5]) ? $row[5] : '';
-                    $arrProductListing[$count]['size'] = isset($row[6]) ? $row[6] : '';
-                    $arrProductListing[$count]['type'] = isset($row[7]) ? $row[7] : '';
-                    $arrProductListing[$count]['net_cost'] = isset($row[8]) ? $row[8] : '';
-                    $arrProductListing[$count]['invoice_cost'] = isset($row[9]) ? $row[9] : '';
-                    $arrProductListing[$count]['cardinal'] = 'Cardinal';
+        foreach ($rows[0] as $key => $row) {
+            if (!empty($row[1])) {
+                $ndc = str_replace('-', '', $row[1]);
+                $fda = FDA::where('ndc_match', $ndc)->first();
+                if (!empty($fda)) {
+                    $fdaData = $fda->toArray();
                 }
+                $arrCardinal[$count]['cin_ndc_upc'] = isset($row[0]) ? $row[0] : '';
+                $arrCardinal[$count]['cin_ndc_upc1'] = isset($row[1]) ? $row[1] : '';
+                $arrCardinal[$count]['trade_name_mfr'] = isset($row[2]) ? $row[2] : '';
+                $arrCardinal[$count]['trade_name_mfr2'] = isset($row[3]) ? $row[3] : '';
+                $arrCardinal[$count]['strength'] = isset($row[4]) ? $row[4] : '';
+                $arrCardinal[$count]['from'] = isset($row[5]) ? $row[5] : '';
+                $arrCardinal[$count]['size'] = isset($row[6]) ? $row[6] : '';
+                $arrCardinal[$count]['type'] = isset($row[7]) ? $row[7] : '';
+                $arrCardinal[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
+                $arrCardinal[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
+                $arrCardinal[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrCardinal[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
+                $arrCardinal[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
+                $arrCardinal[$count]['net_cost'] = isset($row[8]) ? $row[8] : '';
+                $arrCardinal[$count]['invoice_cost'] = isset($row[9]) ? $row[9] : '';
+                $arrCardinal[$count]['cardinal'] = 'Cardinal';
+                $arrCardinal[$count]['created_at'] = now();
+                $arrCardinal[$count]['updated_at'] = now();
             }
             $count++;
         }
 
-        if (!empty($arrProductListing)) {
-            unset($arrProductListing[0]);
+        if (!empty($arrCardinal)) {
+            unset($arrCardinal[0]);
         }
         CardinalHealth::truncate();
-        foreach (array_chunk($arrProductListing, 1) as $ind) {
+        foreach (array_chunk($arrCardinal, 1000) as $ind) {
             CardinalHealth::insert($ind);
         }
     }
@@ -146,25 +163,35 @@ class UploadFileController extends Controller
     public function exportAll($request)
     {
         $rows = Excel::toArray(new FileCategory(), $request->file('export_all'));
-        $arrProductListing = [];
+        $arrExport = [];
         $count = 0;
-        foreach (array_chunk($rows[0], 1) as $t) {
-            foreach ($t as $key => $row) {
-                if (!empty($row[1])) {
-                    $arrProductListing[$count]['name'] = isset($row[1]) ? $row[1] : '';
-                    $arrProductListing[$count]['vendor'] = '';
-                    $arrProductListing[$count]['ndc'] = isset($row[0]) ? $row[0] : '';
-                    $arrProductListing[$count]['price'] = isset($row[7]) ? $row[7] : '';
-                    $arrProductListing[$count]['wholesaler'] = 'EzriRx';
+        foreach ($rows[0] as $key => $row) {
+            if (!empty($row[1])) {
+                $ndc = str_replace('-', '', $row[0]);
+                $fda = FDA::where('ndc_match', $ndc)->first();
+                if (!empty($fda)) {
+                    $fdaData = $fda->toArray();
                 }
+                $arrExport[$count]['name'] = isset($row[1]) ? $row[1] : '';
+                $arrExport[$count]['vendor'] = '';
+                $arrExport[$count]['ndc'] = isset($row[0]) ? $row[0] : '';
+                $arrExport[$count]['price'] = isset($row[7]) ? $row[7] : '';
+                $arrExport[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
+                $arrExport[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
+                $arrExport[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrExport[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
+                $arrExport[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
+                $arrExport[$count]['wholesaler'] = 'EzriRx';
+                $arrExport[$count]['created_at'] = now();
+                $arrExport[$count]['updated_at'] = now();
             }
             $count++;
         }
-        if (!empty($arrProductListing)) {
-            unset($arrProductListing[0]);
+        if (!empty($arrExport)) {
+            unset($arrExport[0]);
         }
         ExportAllProduct::truncate();
-        foreach (array_chunk($arrProductListing, 1) as $ind) {
+        foreach (array_chunk($arrExport, 1000) as $ind) {
             ExportAllProduct::insert($ind);
         }
     }
@@ -177,32 +204,42 @@ class UploadFileController extends Controller
     public function topTrending($request)
     {
         $rows = Excel::toArray(new FileCategory(), $request->file('top_trending'));
-        $arrProductListing = [];
+        $arrTrending = [];
         $count = 0;
-        foreach (array_chunk($rows[0], 1) as $t) {
-            foreach ($t as $key => $row) {
-                if (!empty($row[1])) {
-                    $arrProductListing[$count]['ndc'] = isset($row[1]) ? $row[1] : '';
-                    $arrProductListing[$count]['product_name'] = isset($row[2]) ? $row[2] : '';
-                    $arrProductListing[$count]['strength'] = isset($row[3]) ? $row[3] : '';
-                    $arrProductListing[$count]['package_size'] = isset($row[4]) ? $row[4] : '';
-                    $arrProductListing[$count]['from'] = isset($row[5]) ? $row[5] : '';
-                    $arrProductListing[$count]['mfr'] = isset($row[6]) ? $row[6] : '';
-                    $arrProductListing[$count]['type'] = isset($row[7]) ? $row[7] : '';
-                    $arrProductListing[$count]['low_sold_price'] = isset($row[8]) ? $row[8] : '';
-                    $arrProductListing[$count]['avg_sold_price'] = isset($row[9]) ? $row[9] : '';
-                    $arrProductListing[$count]['high_sold_price'] = isset($row[10]) ? $row[10] : '';
-                    $arrProductListing[$count]['best_price_today'] = isset($row[11]) ? $row[11] : '';
-                    $arrProductListing[$count]['trxade'] = 'Trxade';
+        foreach ($rows[0] as $key => $row) {
+            if (!empty($row[1])) {
+                $ndc = str_replace('-', '', $row[1]);
+                $fda = FDA::where('ndc_match', $ndc)->first();
+                if (!empty($fda)) {
+                    $fdaData = $fda->toArray();
                 }
+                $arrTrending[$count]['ndc'] = isset($row[1]) ? $row[1] : '';
+                $arrTrending[$count]['product_name'] = isset($row[2]) ? $row[2] : '';
+                $arrTrending[$count]['strength'] = isset($row[3]) ? $row[3] : '';
+                $arrTrending[$count]['package_size'] = isset($row[4]) ? $row[4] : '';
+                $arrTrending[$count]['from'] = isset($row[5]) ? $row[5] : '';
+                $arrTrending[$count]['mfr'] = isset($row[6]) ? $row[6] : '';
+                $arrTrending[$count]['type'] = isset($row[7]) ? $row[7] : '';
+                $arrTrending[$count]['low_sold_price'] = isset($row[8]) ? $row[8] : '';
+                $arrTrending[$count]['avg_sold_price'] = isset($row[9]) ? $row[9] : '';
+                $arrTrending[$count]['high_sold_price'] = isset($row[10]) ? $row[10] : '';
+                $arrTrending[$count]['best_price_today'] = isset($row[11]) ? $row[11] : '';
+                $arrTrending[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
+                $arrTrending[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
+                $arrTrending[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrTrending[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
+                $arrTrending[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
+                $arrTrending[$count]['trxade'] = 'Trxade';
+                $arrTrending[$count]['created_at'] = now();
+                $arrTrending[$count]['updated_at'] = now();
             }
             $count++;
         }
-        if (!empty($arrProductListing)) {
-            unset($arrProductListing[0]);
+        if (!empty($arrTrending)) {
+            unset($arrTrending[0]);
         }
         TrendingProduct::truncate();
-        foreach (array_chunk($arrProductListing, 1) as $ind) {
+        foreach (array_chunk($arrTrending, 1000) as $ind) {
             TrendingProduct::insert($ind);
         }
     }
@@ -215,34 +252,46 @@ class UploadFileController extends Controller
     public function auburnPharmaceutical($request)
     {
         $rows = Excel::toArray(new FileCategory(), $request->file('auburn_pharmaceutical'));
-        $arrProductListing = [];
+        $arrAuburn = [];
         $count = 0;
-        foreach (array_chunk($rows[0], 1) as $t) {
-            foreach ($t as $key => $row) {
-                if (!empty($row[9])) {
-                    $arrProductListing[$count]['description'] = isset($row[9]) ? $row[9] : '';
-                    $arrProductListing[$count]['vendor'] = isset($row[11]) ? $row[11] : '';
-                    $arrProductListing[$count]['ndc'] = isset($row[3]) ? $row[3] : '';
-                    $arrProductListing[$count]['price'] = isset($row[26]) ? $row[26] : '';
-                    $arrProductListing[$count]['wholesaler'] = 'Auburn';
+        foreach ($rows[0] as $key => $row) {
+            if (!empty($row[3])) {
+                $ndc = str_replace('-', '', $row[3]);
+                $fda = FDA::where('ndc_match', $ndc)->first();
+                if (!empty($fda)) {
+                    $fdaData = $fda->toArray();
                 }
+                $arrAuburn[$count]['description'] = isset($row[9]) ? $row[9] : '';
+                $arrAuburn[$count]['vendor'] = isset($row[11]) ? $row[11] : '';
+                $arrAuburn[$count]['ndc'] = isset($row[3]) ? $row[3] : '';
+                $arrAuburn[$count]['price'] = isset($row[26]) ? $row[26] : '';
+                $arrAuburn[$count]['wholesaler'] = 'Auburn';
+                $arrAuburn[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
+                $arrAuburn[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
+                $arrAuburn[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrAuburn[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
+                $arrAuburn[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
+                $arrAuburn[$count]['created_at'] = now();
+                $arrAuburn[$count]['updated_at'] = now();
             }
             $count++;
         }
 
-        if (!empty($arrProductListing)) {
-            unset($arrProductListing[0]);
+        if (!empty($arrAuburn)) {
+            unset($arrAuburn[0]);
         }
         AuburnPharmaceutical::truncate();
-        foreach (array_chunk($arrProductListing, 1) as $ind) {
+        foreach (array_chunk($arrAuburn, 1000) as $ind) {
             AuburnPharmaceutical::insert($ind);
         }
     }
 
     /**
+     * @param $data
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Google\Exception
      */
-    public function prepareDataForGoogleSheet()
+    public function prepareDataForGoogleSheet($data)
     {
         $activeProducts = ActiveProductListing::get()->toArray();
         $cardinalHealth = CardinalHealth::get()->toArray();
@@ -252,40 +301,50 @@ class UploadFileController extends Controller
 
         $arrActiveProducts = $arrCardinalHealth = $arrExportAll = $arrTopTrending = $arrAuburnPharmaceutical = [];
         $headers[] = ['Product Name', 'Vendor', 'NDC', 'Price', 'Wholesaler'];
-        foreach ($activeProducts as $key => $row) {
-            $arrActiveProducts[$key][] = $row['desc_one'];
-            $arrActiveProducts[$key][] = $row['vendor'];
-            $arrActiveProducts[$key][] = $row['ndc'];
-            $arrActiveProducts[$key][] = '$' . str_replace('$', '', $row['list_price']);
-            $arrActiveProducts[$key][] = $row['gpw'];
+        if (!empty($data['active_product_listing'])) {
+            foreach ($activeProducts as $key => $row) {
+                $arrActiveProducts[$key][] = $row['desc_one'];
+                $arrActiveProducts[$key][] = $row['vendor'];
+                $arrActiveProducts[$key][] = $row['ndc'];
+                $arrActiveProducts[$key][] = '$' . str_replace('$', '', $row['list_price']);
+                $arrActiveProducts[$key][] = $row['gpw'];
+            }
         }
-        foreach ($cardinalHealth as $key => $row) {
-            $arrCardinalHealth[$key][] = $row['trade_name_mfr'] . ' ' . $row['strength'] . ' ' . $row['from'] . ' ' . $row['size'];
-            $arrCardinalHealth[$key][] = $row['trade_name_mfr2'];
-            $arrCardinalHealth[$key][] = $row['cin_ndc_upc1'];
-            $arrCardinalHealth[$key][] = '$' . str_replace('$', '', $row['invoice_cost']);
-            $arrCardinalHealth[$key][] = $row['cardinal'];
+        if (!empty($data['cardinal_health'])) {
+            foreach ($cardinalHealth as $key => $row) {
+                $arrCardinalHealth[$key][] = $row['trade_name_mfr'] . ' ' . $row['strength'] . ' ' . $row['from'] . ' ' . $row['size'];
+                $arrCardinalHealth[$key][] = $row['trade_name_mfr2'];
+                $arrCardinalHealth[$key][] = $row['cin_ndc_upc1'];
+                $arrCardinalHealth[$key][] = '$' . str_replace('$', '', $row['invoice_cost']);
+                $arrCardinalHealth[$key][] = $row['cardinal'];
+            }
         }
-        foreach ($exportAll as $key => $row) {
-            $arrExportAll[$key][] = $row['name'];
-            $arrExportAll[$key][] = $row['vendor'];
-            $arrExportAll[$key][] = $row['ndc'];
-            $arrExportAll[$key][] = '$' . str_replace('$', '', $row['price']);
-            $arrExportAll[$key][] = $row['wholesaler'];
+        if (!empty($data['export_all'])) {
+            foreach ($exportAll as $key => $row) {
+                $arrExportAll[$key][] = $row['name'];
+                $arrExportAll[$key][] = $row['vendor'];
+                $arrExportAll[$key][] = $row['ndc'];
+                $arrExportAll[$key][] = '$' . str_replace('$', '', $row['price']);
+                $arrExportAll[$key][] = $row['wholesaler'];
+            }
         }
-        foreach ($topTrending as $key => $row) {
-            $arrTopTrending[$key][] = $row['product_name'] . ' ' . $row['strength'] . ' ' . $row['from'];
-            $arrTopTrending[$key][] = $row['mfr'];
-            $arrTopTrending[$key][] = $row['ndc'];
-            $arrTopTrending[$key][] = '$' . str_replace('$', '', $row['best_price_today']);
-            $arrTopTrending[$key][] = $row['trxade'];
+        if (!empty($data['top_trending'])) {
+            foreach ($topTrending as $key => $row) {
+                $arrTopTrending[$key][] = $row['product_name'] . ' ' . $row['strength'] . ' ' . $row['from'];
+                $arrTopTrending[$key][] = $row['mfr'];
+                $arrTopTrending[$key][] = $row['ndc'];
+                $arrTopTrending[$key][] = '$' . str_replace('$', '', $row['best_price_today']);
+                $arrTopTrending[$key][] = $row['trxade'];
+            }
         }
-        foreach ($auburnPharmaceutical as $key => $row) {
-            $arrAuburnPharmaceutical[$key][] = $row['description'];
-            $arrAuburnPharmaceutical[$key][] = $row['vendor'];
-            $arrAuburnPharmaceutical[$key][] = $row['ndc'];
-            $arrAuburnPharmaceutical[$key][] = '$' . str_replace('$', '', $row['price']);
-            $arrAuburnPharmaceutical[$key][] = $row['wholesaler'];
+        if (!empty($data['auburn_pharmaceutical'])) {
+            foreach ($auburnPharmaceutical as $key => $row) {
+                $arrAuburnPharmaceutical[$key][] = $row['description'];
+                $arrAuburnPharmaceutical[$key][] = $row['vendor'];
+                $arrAuburnPharmaceutical[$key][] = $row['ndc'];
+                $arrAuburnPharmaceutical[$key][] = '$' . str_replace('$', '', $row['price']);
+                $arrAuburnPharmaceutical[$key][] = $row['wholesaler'];
+            }
         }
         asort($arrActiveProducts);
         asort($arrCardinalHealth);
@@ -392,7 +451,8 @@ class UploadFileController extends Controller
     {
         $this->client = $this->getClient();
         $this->service = new Sheets($this->client);
-        $this->documentId = '1ROWFwumLf-nCeA1-dF30AZKp12J103pLAjIIxQ_FbKE';
+//        $this->documentId = '1ROWFwumLf-nCeA1-dF30AZKp12J103pLAjIIxQ_FbKE';
+        $this->documentId = '1VZzH9zs_H8XsRWnGqyph-xU6JYxiAaOvcY5-q9VmDdw';
         $this->range = 'A:Z';
 
         $body = new Sheets\ValueRange([

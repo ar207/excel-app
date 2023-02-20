@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::post('upload/file', [\App\Http\Controllers\UploadFileController::class, 'uploadFile']);
-Route::get('color', [\App\Http\Controllers\UploadFileController::class, 'colors']);
+Route::get('fda/files', [\App\Http\Controllers\FdaFileController::class, 'index']);
+Route::post('fda/files', [\App\Http\Controllers\FdaFileController::class, 'store']);
 
 Auth::routes();
 

@@ -106,9 +106,7 @@
 
         $('#submit_form').submit(function (e) {
             e.preventDefault();
-            $('#progressModal').modal('show');
-            $(document.body).css('pointer-events', 'none');
-            progressUpload();
+            showLoader();
             const formData = new FormData(this);
             $.ajax({
                 url: "{{ url('upload/file') }}",
@@ -118,22 +116,29 @@
                 processData: false,
                 success: function (response) {
                     if (response.success == true) {
-                        isProgressComplete = 1;
+                        $('#submit_form')[0].reset();
+                      hideLoader();
                     } else {
-                        clearInterval(interval);
-                        $(document.body).css('pointer-events', 'all');
-                        $('#progressModal').modal('hide');
+                        hideLoader();
                         swal('Error', response.message, 'error');
                     }
                 },
                 error: function (error) {
-                    clearInterval(interval);
-                    $(document.body).css('pointer-events', 'all');
-                    $('#progressModal').modal('hide');
+                    hideLoader();
                     swal('Error', error.statusText, 'error');
                 }
             })
         });
+
+        function showLoader() {
+            $('#preloader').show();
+            $(document.body).css('pointer-events', 'none');
+        }
+
+        function hideLoader() {
+            $('#preloader').hide();
+            $(document.body).css('pointer-events', 'all');
+        }
 
         function progressUpload() {
             let value = 10;

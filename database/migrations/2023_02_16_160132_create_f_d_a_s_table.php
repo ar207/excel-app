@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActiveProductListingsTable extends Migration
+class CreateFDASTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateActiveProductListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('active_product_listings', function (Blueprint $table) {
+        Schema::create('f_d_a_s', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('file_category_id')->nullable();
-            $table->mediumText('desc_one')->nullable();
+            $table->string('ndc')->nullable();
+            $table->string('ndc_match')->nullable();
             $table->string('name')->nullable();
             $table->string('strength')->nullable();
             $table->string('form')->nullable();
             $table->string('count')->nullable();
-            $table->mediumText('vendor')->nullable();
-            $table->mediumText('ndc')->nullable();
-            $table->mediumText('list_price')->nullable();
-            $table->mediumText('gpw')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +32,6 @@ class CreateActiveProductListingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('active_product_listings');
+        Schema::dropIfExists('f_d_a_s');
     }
 }
