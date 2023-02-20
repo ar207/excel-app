@@ -47,6 +47,11 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('odbc/data') }}">
+                                    ODBC Data
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('fda/files') }}">
                                     FDA Files Upload
                                 </a>

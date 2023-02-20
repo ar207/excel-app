@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::post('upload/file', [\App\Http\Controllers\UploadFileController::class, 'uploadFile']);
 Route::get('fda/files', [\App\Http\Controllers\FdaFileController::class, 'index']);
 Route::post('fda/files', [\App\Http\Controllers\FdaFileController::class, 'store']);
+Route::get('odbc/data', [\App\Http\Controllers\ODBCController::class, 'index']);
 
 Auth::routes();
 

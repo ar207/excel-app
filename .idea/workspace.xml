@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85437ca4-9e97-4d81-ba96-11cdabd85ef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/fda-file/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/odbc/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2023_01_18_221049_create_active_product_listings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_01_18_221049_create_active_product_listings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -86,14 +83,14 @@
         <counts>
           <entry key="env" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="10006" />
+          <entry key="php" value="10181" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="2515" />
+          <entry key="Blade" value="2639" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="7491" />
+          <entry key="PHP" value="7542" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -104,19 +101,19 @@
           <entry key="html" value="2" />
           <entry key="js" value="2" />
           <entry key="json" value="8" />
-          <entry key="php" value="86" />
+          <entry key="php" value="88" />
           <entry key="ts" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="6" />
+          <entry key="Blade" value="7" />
           <entry key="CSS" value="4" />
           <entry key="HTML" value="2" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="8" />
           <entry key="JavaScript" value="2" />
-          <entry key="PHP" value="80" />
+          <entry key="PHP" value="81" />
           <entry key="TypeScript" value="2" />
         </counts>
       </usages-collector>
@@ -124,12 +121,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2752">
-              <caret line="273" column="57" selection-start-line="273" selection-start-column="57" selection-end-line="273" selection-end-column="57" />
-              <caret line="274" column="57" selection-start-line="274" selection-start-column="57" selection-end-line="274" selection-end-column="57" />
+            <state relative-caret-position="324">
+              <caret line="276" column="21" lean-forward="true" selection-start-line="276" selection-start-column="21" selection-end-line="276" selection-end-column="21" />
               <folding>
                 <element signature="e#40#69#0#PHP" expanded="true" />
               </folding>
@@ -152,8 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="25" column="45" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="45" />
+            <state relative-caret-position="290">
+              <caret line="27" column="52" selection-end-line="188" />
             </state>
           </provider>
         </entry>
@@ -161,8 +157,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="374">
+              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -170,8 +166,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="374">
+              <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -179,8 +193,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="187">
+              <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
               </folding>
@@ -201,7 +215,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dd(</find>
       <find>id=&quot;file&quot; required</find>
       <find>requiredaccept</find>
       <find>activeProductListing</find>
@@ -231,6 +244,7 @@
       <find>active_product_listing</find>
       <find>#pre</find>
       <find>submit_form</find>
+      <find>fda_ndc</find>
     </findStrings>
     <replaceStrings>
       <replace>required</replace>
@@ -272,8 +286,6 @@
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/Imports/CardinalImport.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Models/Product.php" />
         <option value="$PROJECT_DIR$/app/Models/FDA.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_02_16_154506_create_products_table.php" />
@@ -288,6 +300,10 @@
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Imports/ActiveImport.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" />
+        <option value="$PROJECT_DIR$/resources/views/odbc/index.blade.php" />
       </list>
     </option>
   </component>
@@ -441,7 +457,31 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="home&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/home.blade.php&#10;Fda&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;fdas&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;ActiveProductListings&#9;null&#9;null&#10;_packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_17_151125_create_packages_table.php&#10;rodu&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Ca&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;CardinalI&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;_products_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;boot&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FDAs&#9;null&#9;null&#10;2023_02_16_160132_create_f_d_a_s_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;web&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;Car&#9;null&#9;null&#10;RegisterC&#9;null&#9;null&#10;register&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/auth/register.blade.php&#10;bootstrap4&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;composer&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/composer.json&#10;FileCat&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/seeders/FileCategorySeeder.php&#10;ExportAllProduct&#9;null&#9;null&#10;_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php&#10;2023_01_21_151000_create_export_all_products_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;web.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;crede&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/credentials2.json&#10;AuburnPharmaceutical&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php&#10;Data&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/seeders/DatabaseSeeder.php&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/.env&#10;2023_01_18_221049_create_active_product_listings_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;Da&#9;null&#9;null&#10;2023_01_18_164851_create_file_categories_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_164851_create_file_categories_table.php&#10;Upl&#9;null&#9;null&#10;login&#9;FILE&#9;file://C:/xampp/htdocs/excel-app/resources/views/auth/login.blade.php&#10;APp&#9;null&#9;null&#10;composer.json&#9;FILE&#9;file://C:/xampp/htdocs/excel-app/composer.json" />
@@ -545,18 +585,18 @@
       <workItem from="1676877320077" duration="1025000" />
       <workItem from="1676880136175" duration="2101000" />
       <workItem from="1676888698584" duration="1815000" />
-      <workItem from="1676890974374" duration="8023000" />
+      <workItem from="1676890974374" duration="9870000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116125000" />
+    <option name="totallyTimeSpent" value="117972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1969914" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1969914" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -585,20 +625,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/google/apiclient-services/src/Sheets/AddConditionalFormatRuleRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/google/apiclient-services/src/Sheets/BatchUpdateSpreadsheetRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/google/apiclient-services/src/Sheets/GridRange.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1031">
@@ -813,20 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -848,23 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-          <folding>
-            <element signature="e#40#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Imports/ActiveImport.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -877,12 +872,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2752">
-          <caret line="273" column="57" selection-start-line="273" selection-start-column="57" selection-end-line="273" selection-end-column="57" />
-          <caret line="274" column="57" selection-start-line="274" selection-start-column="57" selection-end-line="274" selection-end-column="57" />
+        <state relative-caret-position="324">
+          <caret line="276" column="21" lean-forward="true" selection-start-line="276" selection-start-column="21" selection-end-line="276" selection-end-column="21" />
           <folding>
             <element signature="e#40#69#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#70#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="27" column="52" selection-end-line="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
         </state>
       </provider>
     </entry>
