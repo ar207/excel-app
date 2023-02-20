@@ -32,8 +32,9 @@
 @endsection
 @section('scripts')
     <script>
+        let page = 1;
         $(document).ready(function () {
-
+            getData();
         });
 
         /**
@@ -46,31 +47,39 @@
             return !(!!val ? typeof val === 'object' ? Array.isArray(val) ? !!val.length : !!Object.keys(val).length : true : false);
         }
 
-        $('#submit_form').submit(function (e) {
+        $(document).on("click", '.paq-pager ul.pagination a', function (e) {
             e.preventDefault();
+            page = $(this).attr('href').split('page=')[1];
+            getData();
+        });
+
+        function getData() {
             showLoader();
-            const formData = new FormData(this);
+            const formData = {
+                '_token': "{{ csrf_token() }}",
+                page: page,
+                per_page: 10,
+            };
             $.ajax({
-                url: "{{ url('upload/file') }}",
-                type: 'POST',
+                url: "{{ url('odbc/data') }}",
+                type: 'get',
                 data: formData,
-                contentType: false,
-                processData: false,
                 success: function (response) {
-                    if (response.success == true) {
-                        $('#submit_form')[0].reset();
-                        hideLoader();
-                    } else {
-                        hideLoader();
-                        swal('Error', response.message, 'error');
+                    console.log(response.data);
+                    if (response.data) {
+
                     }
+                    if (response.data.pager !== 'undefined') {
+                        $('.paq-pager').show().html(response.data.pager);
+                    }
+                    hideLoader();
                 },
                 error: function (error) {
                     hideLoader();
                     swal('Error', error.statusText, 'error');
                 }
             })
-        });
+        }
 
         function showLoader() {
             $('#preloader').show();

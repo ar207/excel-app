@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::post('upload/file', [\App\Http\Controllers\UploadFileController::class, 'uploadFile']);
-Route::get('fda/files', [\App\Http\Controllers\FdaFileController::class, 'index']);
-Route::post('fda/files', [\App\Http\Controllers\FdaFileController::class, 'store']);
-Route::get('odbc/data', [\App\Http\Controllers\ODBCController::class, 'index']);
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('upload/file', [\App\Http\Controllers\UploadFileController::class, 'uploadFile']);
+    Route::get('fda/files', [\App\Http\Controllers\FdaFileController::class, 'index']);
+    Route::post('fda/files', [\App\Http\Controllers\FdaFileController::class, 'store']);
+    Route::get('odbc', [\App\Http\Controllers\ODBCController::class, 'index']);
+    Route::get('odbc/data', [\App\Http\Controllers\ODBCController::class, 'getData']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
