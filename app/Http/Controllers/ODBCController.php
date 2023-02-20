@@ -49,9 +49,9 @@ class ODBCController extends Controller
                 $arr[$key]['auburn_price'] = !empty($auburn) ? str_replace('$', '', $auburn->price) : '';
             }
         }
-        dd($arr);
-        $this->data['odbc'] = paginateArrayData($activeData, $data['per_page'], $data['page']);
-        $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($activeData));
+
+        $this->data['odbc'] = paginateArrayData($arr, $data['per_page'], $data['page']);
+        $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($arr));
 
         return response()->json(['data' => $this->data]);
     }
