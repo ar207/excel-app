@@ -20,7 +20,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UploadFileController extends Controller
 {
-    private $data = [];
+//    private $data = [];
     private $message = '';
     private $success = false;
     private $client, $service, $documentId, $range;
