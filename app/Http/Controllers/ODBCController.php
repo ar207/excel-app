@@ -67,34 +67,18 @@ class ODBCController extends Controller
      */
     private function getOdbcData()
     {
-        $activeData = ActiveProductListing::where('name', '!=', '')->get()->toArray();
+        $activeData = ActiveProductListing::where('name', '!=', '')->get();
         $arr = [];
         if (!empty($activeData)) {
             foreach ($activeData as $key => $row) {
-                $minCardinal = $minExport = $minTrending = $minAuburn = 0;
-                $search = '%' . $row['name'] . '%';
-                $cardinalData = CardinalHealth::select('invoice_cost', 'trade_name_mfr')->where('trade_name_mfr', 'like', $search)->get()->toArray();
-                $exportData = ExportAllProduct::select('price', 'name')->where('name', 'like', $search)->get()->toArray();
-                $topTrending = TrendingProduct::select('best_price_today', 'product_name')->where('product_name', 'like', $search)->get()->toArray();
-                $auburn = AuburnPharmaceutical::select('price', 'description')->where('description', 'like', $search)->get()->toArray();
-                if (!empty($cardinalData)) {
-                    $cardinalData = array_column($cardinalData, 'invoice_cost');
-                    $minCardinal = min($cardinalData);
-                }
-                if (!empty($exportData)) {
-                    $exportData = array_column($exportData, 'price');
-                    $minExport = min($exportData);
-                }
-                if (!empty($topTrending)) {
-                    $topTrending = array_column($topTrending, 'best_price_today');
-                    $minTrending = min($topTrending);
-                }
-                if (!empty($auburn)) {
-                    $auburn = array_column($auburn, 'price');
-                    $minAuburn = min($auburn);
-                }
-                $arr[$key]['name'] = $row['name'];
-                $arr[$key]['gpw_price'] = !empty($row['list_price']) ? '$' . str_replace('$', '', $row['list_price']) : '-';
+                $search = '%' . $row->name . '%';
+                $minCardinal = CardinalHealth::select('invoice_cost', 'trade_name_mfr')->where('trade_name_mfr', 'like', $search)->whereNotNull('invoice_cost')->min("invoice_cost");
+                $minExport = ExportAllProduct::select('price', 'name')->where('name', 'like', $search)->whereNotNull('price')->min("price");
+                $minTrending = TrendingProduct::select('best_price_today', 'product_name')->where('product_name', 'like', $search)->whereNotNull('best_price_today')->min("best_price_today");
+                $minAuburn = AuburnPharmaceutical::select('price', 'description')->where('description', 'like', $search)->whereNotNull('price')->min("price");
+                $arr[$key]['ndc'] = $row->fda_ndc;
+                $arr[$key]['name'] = $row->name;
+                $arr[$key]['gpw_price'] = !empty($row->list_price) ? '$' . str_replace('$', '', $row->list_price) : '-';
                 $arr[$key]['cardinal_price'] = !empty($minCardinal) ? '$' . str_replace('$', '', $minCardinal) : '-';
                 $arr[$key]['export_price'] = !empty($minExport) ? '$' . str_replace('$', '', $minExport) : '-';
                 $arr[$key]['trending_price'] = !empty($minTrending) ? '$' . str_replace('$', '', $minTrending) : '-';

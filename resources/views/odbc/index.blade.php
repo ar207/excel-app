@@ -19,6 +19,7 @@
                         <table class="table table-striped">
                             <thead>
                             <th>#</th>
+                            <th>NDC</th>
                             <th>Name</th>
                             <th>GPW</th>
                             <th>Cardinal</th>
@@ -79,6 +80,7 @@
                         $.each(response.data.odbc.data, function (i, v) {
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
+                                '   <td>' + v.ndc + '</td>' +
                                 '   <td>' + v.name + '</td>' +
                                 '   <td>' + v.gpw_price + '</td>' +
                                 '   <td>' + v.cardinal_price + '</td>' +

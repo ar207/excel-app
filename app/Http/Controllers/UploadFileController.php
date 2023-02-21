@@ -83,7 +83,7 @@ class UploadFileController extends Controller
                 }
                 $arrProductListing[$count]['desc_one'] = isset($row[1]) ? $row[1] : '';
                 $arrProductListing[$count]['vendor'] = isset($row[5]) ? $row[5] : '';
-                $arrProductListing[$count]['ndc'] = isset($row[6]) ? $row[6] : '';
+                $arrProductListing[$count]['ndc'] = isset($row[6]) ? ndcCorrection($row[6]) : '';
                 $arrProductListing[$count]['list_price'] = isset($row[4]) ? $row[4] : '';
                 $arrProductListing[$count]['name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
                 $arrProductListing[$count]['strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
@@ -172,7 +172,7 @@ class UploadFileController extends Controller
                 }
                 $arrExport[$count]['name'] = isset($row[1]) ? $row[1] : '';
                 $arrExport[$count]['vendor'] = '';
-                $arrExport[$count]['ndc'] = isset($row[0]) ? $row[0] : '';
+                $arrExport[$count]['ndc'] = isset($row[0]) ? ndcCorrection($row[0]) : '';
                 $arrExport[$count]['price'] = isset($row[7]) ? $row[7] : '';
                 $arrExport[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
                 $arrExport[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
@@ -211,7 +211,7 @@ class UploadFileController extends Controller
                 if (!empty($fda)) {
                     $fdaData = $fda->toArray();
                 }
-                $arrTrending[$count]['ndc'] = isset($row[1]) ? $row[1] : '';
+                $arrTrending[$count]['ndc'] = isset($row[1]) ? ndcCorrection($row[1]) : '';
                 $arrTrending[$count]['product_name'] = isset($row[2]) ? $row[2] : '';
                 $arrTrending[$count]['strength'] = isset($row[3]) ? $row[3] : '';
                 $arrTrending[$count]['package_size'] = isset($row[4]) ? $row[4] : '';
@@ -261,7 +261,7 @@ class UploadFileController extends Controller
                 }
                 $arrAuburn[$count]['description'] = isset($row[9]) ? $row[9] : '';
                 $arrAuburn[$count]['vendor'] = isset($row[11]) ? $row[11] : '';
-                $arrAuburn[$count]['ndc'] = isset($row[3]) ? $row[3] : '';
+                $arrAuburn[$count]['ndc'] = isset($row[3]) ? ndcCorrection($row[3]) : '';
                 $arrAuburn[$count]['price'] = isset($row[26]) ? $row[26] : '';
                 $arrAuburn[$count]['wholesaler'] = 'Auburn';
                 $arrAuburn[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';

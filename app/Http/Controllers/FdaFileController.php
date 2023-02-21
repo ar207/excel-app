@@ -115,7 +115,7 @@ class FdaFileController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $fda = FDA::get()->toArray();
+        $fda = FDA::get();
 
         $this->data['fda'] = paginateArrayData($fda, $data['per_page'], $data['page']);
         $this->data['pager'] = make_complete_pagination_block($this->data['fda'], count($fda));
