@@ -6,25 +6,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col-sm-6 col-12">
-                                <h6 class="h6">ODBC</h6>
-                            </div>
-                            <div class="col-sm-6 col-12">
-                                <button class="btn btn-sm btn-primary float-right" id="export-to-excel">Export to excel</button>
-                            </div>
-                        </div>
+                        <h6 class="h6">FDA</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                             <th>#</th>
+                            <th>Ndc</th>
                             <th>Name</th>
-                            <th>GPW</th>
-                            <th>Cardinal</th>
-                            <th>Ezirx</th>
-                            <th>Trxade</th>
-                            <th>Auburn</th>
+                            <th>Strength</th>
+                            <th>Form</th>
+                            <th>Count</th>
                             </thead>
                             <tbody id="page-data"></tbody>
                         </table>
@@ -58,10 +50,6 @@
             getData();
         });
 
-        $('body').on('click', '#export-to-excel', function () {
-           window.location.href = "{{ url('odbc/export') }}";
-        });
-
         function getData() {
             showLoader();
             const formData = {
@@ -70,21 +58,20 @@
                 per_page: 10,
             };
             $.ajax({
-                url: "{{ url('odbc/data') }}",
+                url: "{{ url('fda/data') }}",
                 type: 'get',
                 data: formData,
                 success: function (response) {
                     let html = '', count = 1;
-                    if (!empty(response.data.odbc)) {
-                        $.each(response.data.odbc.data, function (i, v) {
+                    if (!empty(response.data.fda)) {
+                        $.each(response.data.fda.data, function (i, v) {
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
+                                '   <td>' + v.ndc + '</td>' +
                                 '   <td>' + v.name + '</td>' +
-                                '   <td>' + v.gpw_price + '</td>' +
-                                '   <td>' + v.cardinal_price + '</td>' +
-                                '   <td>' + v.export_price + '</td>' +
-                                '   <td>' + v.trending_price + '</td>' +
-                                '   <td>' + v.auburn_price + '</td>' +
+                                '   <td>' + v.strength + '</td>' +
+                                '   <td>' + v.form + '</td>' +
+                                '   <td>' + v.count + '</td>' +
                                 '</tr>';
                             count++;
                         });

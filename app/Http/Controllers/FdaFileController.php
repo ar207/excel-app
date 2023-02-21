@@ -28,6 +28,16 @@ class FdaFileController extends Controller
     }
 
     /**
+     * Used to return index of specific resource
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function fda()
+    {
+        return view('fda.index');
+    }
+
+    /**
      * Used to store the specified resource data
      *
      * @param Request $request
@@ -92,5 +102,24 @@ class FdaFileController extends Controller
                 FDA::insert($t);
             }
         }
+    }
+
+    /**
+     * This is used to get odbc data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getData(Request $request)
+    {
+        $data = $request->all();
+        ini_set('max_execution_time', '0');
+        ini_set('memory_limit', '-1');
+        $fda = FDA::get()->toArray();
+
+        $this->data['fda'] = paginateArrayData($fda, $data['per_page'], $data['page']);
+        $this->data['pager'] = make_complete_pagination_block($this->data['fda'], count($fda));
+
+        return response()->json(['data' => $this->data]);
     }
 }

@@ -19,10 +19,16 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::post('upload/file', [\App\Http\Controllers\UploadFileController::class, 'uploadFile']);
+
+    Route::get('fda', [\App\Http\Controllers\FdaFileController::class, 'fda']);
     Route::get('fda/files', [\App\Http\Controllers\FdaFileController::class, 'index']);
     Route::post('fda/files', [\App\Http\Controllers\FdaFileController::class, 'store']);
+    Route::get('fda/data', [\App\Http\Controllers\FdaFileController::class, 'getData']);
+
     Route::get('odbc', [\App\Http\Controllers\ODBCController::class, 'index']);
     Route::get('odbc/data', [\App\Http\Controllers\ODBCController::class, 'getData']);
+    Route::get('odbc/export', [\App\Http\Controllers\ODBCController::class, 'exportToExcel']);
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 Auth::routes();

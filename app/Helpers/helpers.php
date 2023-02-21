@@ -99,7 +99,7 @@ function get_pager_info_paragraph($obj, $is_simple, $totalRecord, $type = null)
     if ($type) {
         if ($total > 0) {
             if ($type == 'long') {
-                $info = "<div class='pager-info'><p>$start tot $end van $total resultaten.</p><div class='clr'></div></div>";
+                $info = "<div class='pager-info'><p>$start to $end from $total results.</p><div class='clr'></div></div>";
             } else {
                 $info = "<div class='pager-info'><p>Side $current_page of $last_page </p><div class='clr'></div></div>";
             }
