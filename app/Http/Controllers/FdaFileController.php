@@ -7,9 +7,11 @@ use App\Imports\ProductImport;
 use App\Models\FDA;
 use App\Models\Package;
 use App\Models\Product;
+use App\Models\ProductPackageCombination;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use function Ramsey\Collection\Map\toArray;
 
 class FdaFileController extends Controller
 {
@@ -50,6 +52,34 @@ class FdaFileController extends Controller
         $this->message = 'Something went wrong';
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
+        $products = Product::get()->toArray();
+        $combination = [];
+        $count = 1;
+        if (!empty($products)) {
+            ProductPackageCombination::truncate();
+            foreach (array_chunk($products, 500) as $ind => $data) {
+                foreach ($data as $product) {
+                    $package = Package::where('product_id', $product['product_id'])->get()->toArray();
+                    foreach ($package as $key => $row) {
+                        $combination[$count]['product_table_id'] = $product['id'];
+                        $combination[$count]['package_table_id'] = $row['id'];
+                        $combination[$count]['name'] = $product['name'];
+                        $combination[$count]['strength'] = $product['strength'];
+                        $combination[$count]['unit'] = $product['unit'];
+                        $combination[$count]['labeler_name'] = $product['labeler_name'];
+                        $combination[$count]['brand_name'] = $product['brand_name'];
+                        $combination[$count]['dosage_form'] = $product['dosage_form'];
+                        $combination[$count]['ndc'] = ndcCorrection($row['ndc_code']);
+                        $combination[$count]['ndc_match'] = str_replace('-', '', ndcCorrection($row['ndc_code']));
+                        $combination[$count]['count'] = $row['description'];
+                        $count++;
+                    }
+                }
+            }
+            foreach (array_chunk($combination, 500) as $ind) {
+                ProductPackageCombination::insert($ind);
+            }
+        }
         if (!empty($data)) {
             if (!empty($data['product'])) {
                 Product::truncate();
@@ -115,7 +145,7 @@ class FdaFileController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $fda = FDA::get();
+        $fda = ProductPackageCombination::get();
 
         $this->data['fda'] = paginateArrayData($fda, $data['per_page'], $data['page']);
         $this->data['pager'] = make_complete_pagination_block($this->data['fda'], count($fda));

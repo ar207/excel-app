@@ -16,6 +16,7 @@ class CreateActiveProductListingsTable extends Migration
         Schema::create('active_product_listings', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('file_category_id')->nullable();
+            $table->string('product_no')->nullable();
             $table->mediumText('desc_one')->nullable();
             $table->string('name')->nullable();
             $table->string('strength')->nullable();

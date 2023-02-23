@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -11,7 +16,9 @@
                                 <h6 class="h6">ODBC</h6>
                             </div>
                             <div class="col-sm-6 col-12">
-                                <button class="btn btn-sm btn-primary float-right" id="export-to-excel">Export to excel</button>
+                                <button class="btn btn-sm btn-primary float-right" id="export-to-excel">Export to
+                                    excel
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -19,8 +26,12 @@
                         <table class="table table-striped">
                             <thead>
                             <th>#</th>
+                            <th>Product No</th>
                             <th>NDC</th>
                             <th>Name</th>
+                            <th>Strength</th>
+                            <th>Form</th>
+                            <th>Count</th>
                             <th>GPW</th>
                             <th>Cardinal</th>
                             <th>Ezirx</th>
@@ -40,6 +51,7 @@
     <script>
         let page = 1;
         $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
             getData();
         });
 
@@ -60,7 +72,7 @@
         });
 
         $('body').on('click', '#export-to-excel', function () {
-           window.location.href = "{{ url('odbc/export') }}";
+            window.location.href = "{{ url('odbc/export') }}";
         });
 
         function getData() {
@@ -78,15 +90,35 @@
                     let html = '', count = 1;
                     if (!empty(response.data.odbc)) {
                         $.each(response.data.odbc.data, function (i, v) {
+                            let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData;
+                            if (v.gpw_price != '-') {
+                                gpwData = 'NDC:' + v.ndc + ' Name:' + v.name + ' Strength:' + v.strength + ' Form:' + v.form + ' Count:' + v.count;
+                            }
+                            if (v.cardinal_price != '-') {
+                                cardinalData = 'NDC:' + v.cardinal_data.fda_ndc + ' Name:' + v.cardinal_data.fda_name + ' Strength:' + v.cardinal_data.fda_strength + ' Count:' + v.cardinal_data.fda_count;
+                            }
+                            if (v.export_price != '-') {
+                                exportData = 'NDC:' + v.export_data.fda_ndc + ' Name:' + v.export_data.fda_name + ' Strength:' + v.export_data.fda_strength + ' Count:' + v.export_data.fda_count;
+                            }
+                            if (v.trending_price != '-') {
+                                trendingData = 'NDC:' + v.trending_data.fda_ndc + ' Name:' + v.trending_data.fda_name + ' Strength:' + v.trending_data.fda_strength + ' Count:' + v.trending_data.fda_count;
+                            }
+                            if (v.auburn_price != '-') {
+                                auburnData = 'NDC:' + v.auburn_data.fda_ndc + ' Name:' + v.auburn_data.fda_name + ' Strength:' + v.auburn_data.fda_strength + ' Count:' + v.auburn_data.fda_count;
+                            }
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
+                                '   <td>' + v.product_no + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
                                 '   <td>' + v.name + '</td>' +
-                                '   <td>' + v.gpw_price + '</td>' +
-                                '   <td>' + v.cardinal_price + '</td>' +
-                                '   <td>' + v.export_price + '</td>' +
-                                '   <td>' + v.trending_price + '</td>' +
-                                '   <td>' + v.auburn_price + '</td>' +
+                                '   <td>' + v.strength + '</td>' +
+                                '   <td>' + v.form + '</td>' +
+                                '   <td>' + v.count + '</td>' +
+                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + gpwData + '">' + v.gpw_price + '</a></td>' +
+                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + cardinalData + '">' + v.cardinal_price + '</a></td>' +
+                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + exportData + '">' + v.export_price + '</a></td>' +
+                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + trendingData + '">' + v.trending_price + '</a></td>' +
+                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + auburnData + '">' + v.auburn_price + '</a></td>' +
                                 '</tr>';
                             count++;
                         });

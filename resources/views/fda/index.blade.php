@@ -69,8 +69,8 @@
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
                                 '   <td>' + v.name + '</td>' +
-                                '   <td>' + v.strength + '</td>' +
-                                '   <td>' + v.form + '</td>' +
+                                '   <td>' + v.strength + ' ' + v.unit + '</td>' +
+                                '   <td>' + v.dosage_form + '</td>' +
                                 '   <td>' + v.count + '</td>' +
                                 '</tr>';
                             count++;

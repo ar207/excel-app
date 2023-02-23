@@ -20,9 +20,13 @@ class PackageImport implements ToCollection, WithChunkReading
         foreach ($collection->toArray() as $row)
         {
             if (!empty($row[0])) {
+                $description = '';
+                if (!empty($row[3])) {
+                    $description = explode('in', $row[3]);
+                }
                 $arr[$count]['product_id'] = isset($row[0]) ? $row[0] : '';
                 $arr[$count]['ndc_code'] = isset($row[2]) ? $row[2] : '';
-                $arr[$count]['description'] = isset($row[3]) ? $row[3] : '';
+                $arr[$count]['description'] = isset($description[0]) ? $description[0] : '';
                 $arr[$count]['created_at'] = Carbon::now();
                 $arr[$count]['updated_at'] = Carbon::now();
                 $count++;

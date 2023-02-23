@@ -21,10 +21,12 @@ class ProductImport implements ToCollection, WithChunkReading
         {
             if (!empty($row[0])) {
                 $arr[$count]['product_id'] = isset($row[0]) ? $row[0] : '';
+                $arr[$count]['brand_name'] = isset($row[3]) ? $row[3] : '';
                 $arr[$count]['dosage_form'] = isset($row[6]) ? $row[6] : '';
                 $arr[$count]['labeler_name'] = isset($row[12]) ? $row[12] : '';
                 $arr[$count]['name'] = isset($row[13]) ? $row[13] : '';
                 $arr[$count]['strength'] = isset($row[14]) ? $row[14] : '';
+                $arr[$count]['unit'] = isset($row[15]) ? $row[15] : '';
                 $arr[$count]['created_at'] = Carbon::now();
                 $arr[$count]['updated_at'] = Carbon::now();
                 $count++;

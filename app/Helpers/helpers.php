@@ -162,37 +162,19 @@ function ndcCorrection($val)
 {
     $ndc = '';
     if (!empty($val)) {
-        $ndcs = explode('-', $val);
-        $first = 00000; $second = 0000; $third = 00;
-        if (isset($ndcs[0]) && !empty($ndcs[0])) {
-            $first = $ndcs[0];
-            if (strlen($ndcs[0]) == 4) {
-                $first = '0' . $ndcs[0];
-            } elseif (strlen($ndcs[0]) == 3) {
-                $first = '00' . $ndcs[0];
-            } elseif (strlen($ndcs[0]) == 2) {
-                $first = '000' . $ndcs[0];
-            } elseif (strlen($ndcs[0]) == 1) {
-                $first = '0000' . $ndcs[0];
+        $ndcValue = str_replace('-', '', $val);
+        $ndcLength = strlen($ndcValue);
+        $remainingNdc = 11 - $ndcLength;
+        $zero = 0;
+        if (!empty($remainingNdc)) {
+            for ($i = 1; $i <= $remainingNdc; $i++) {
+                $ndcValue = $zero . $ndcValue;
             }
         }
-        if (isset($ndcs[1]) && !empty($ndcs[1])) {
-            $second = $ndcs[1];
-            if (strlen($ndcs[1]) == 3) {
-                $second = '0' . $ndcs[1];
-            } elseif (strlen($ndcs[1]) == 2) {
-                $second = '00' . $ndcs[1];
-            } elseif (strlen($ndcs[1]) == 1) {
-                $second = '000' . $ndcs[1];
-            }
-        }
-        if (isset($ndcs[2]) && !empty($ndcs[2])) {
-            $third = $ndcs[2];
-            if (strlen($ndcs[2]) == 1) {
-                $third = '0' . $ndcs[2];
-            }
-        }
-        $ndc = $first . '-' . $second . '-' . $third;
+        $firstNdc = substr($ndcValue, 0, 5);
+        $secondNdc = substr($ndcValue, 5, 4);
+        $thirdNdc = substr($ndcValue, 9, 2);
+        $ndc = $firstNdc . '-' . $secondNdc . '-' . $thirdNdc;
     }
 
     return $ndc;

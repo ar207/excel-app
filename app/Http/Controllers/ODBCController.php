@@ -53,7 +53,7 @@ class ODBCController extends Controller
     {
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $arrayData = $this->getOdbcData();
+        $arrayData = $this->getOdbcData(1);
         $response = Excel::download(new ODBCExport($arrayData), 'ODBC.xlsx', \Maatwebsite\Excel\Excel::XLSX);
         ob_end_clean();
 
@@ -63,26 +63,50 @@ class ODBCController extends Controller
     /**
      * This is used to get odbc data
      *
+     * @param int $isExport
      * @return array
      */
-    private function getOdbcData()
+    private function getOdbcData($isExport = 0)
     {
         $activeData = ActiveProductListing::where('name', '!=', '')->get();
         $arr = [];
         if (!empty($activeData)) {
             foreach ($activeData as $key => $row) {
                 $search = '%' . $row->name . '%';
-                $minCardinal = CardinalHealth::select('invoice_cost', 'trade_name_mfr')->where('trade_name_mfr', 'like', $search)->whereNotNull('invoice_cost')->min("invoice_cost");
-                $minExport = ExportAllProduct::select('price', 'name')->where('name', 'like', $search)->whereNotNull('price')->min("price");
-                $minTrending = TrendingProduct::select('best_price_today', 'product_name')->where('product_name', 'like', $search)->whereNotNull('best_price_today')->min("best_price_today");
-                $minAuburn = AuburnPharmaceutical::select('price', 'description')->where('description', 'like', $search)->whereNotNull('price')->min("price");
+                $minCardinal = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min('invoice_cost');
+                $minExport = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('price')->min("price");
+                $minTrending = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('best_price_today')->min("best_price_today");
+                $minAuburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('price')->min("price");
+                $cardinal = $export = $trending = $auburn = [];
+                if (!empty($minCardinal)) {
+                    $cardinal = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                }
+                if (!empty($minExport)) {
+                    $export = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                }
+                if (!empty($minTrending)) {
+                    $trending = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                }
+                if (!empty($minAuburn)) {
+                    $auburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                }
+                $arr[$key]['product_no'] = $row->product_no;
                 $arr[$key]['ndc'] = $row->fda_ndc;
                 $arr[$key]['name'] = $row->name;
+                $arr[$key]['strength'] = $row->strength;
+                $arr[$key]['form'] = $row->form;
+                $arr[$key]['count'] = $row->count;
                 $arr[$key]['gpw_price'] = !empty($row->list_price) ? '$' . str_replace('$', '', $row->list_price) : '-';
                 $arr[$key]['cardinal_price'] = !empty($minCardinal) ? '$' . str_replace('$', '', $minCardinal) : '-';
                 $arr[$key]['export_price'] = !empty($minExport) ? '$' . str_replace('$', '', $minExport) : '-';
                 $arr[$key]['trending_price'] = !empty($minTrending) ? '$' . str_replace('$', '', $minTrending) : '-';
                 $arr[$key]['auburn_price'] = !empty($minAuburn) ? '$' . str_replace('$', '', $minAuburn) : '-';
+                if (empty($isExport)) {
+                    $arr[$key]['cardinal_data'] = !empty($cardinal) ? $cardinal->toArray() : [];
+                    $arr[$key]['export_data'] = !empty($export) ? $export->toArray() : [];
+                    $arr[$key]['trending_data'] = !empty($trending) ? $trending->toArray() : [];
+                    $arr[$key]['auburn_data'] = !empty($auburn) ? $auburn->toArray() : [];
+                }
             }
         }
 

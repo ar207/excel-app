@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('labeler_name')->nullable();
             $table->mediumText('name')->nullable();
             $table->string('strength')->nullable();
+            $table->string('brand_name')->nullable();
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }

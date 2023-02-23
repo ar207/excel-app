@@ -38,7 +38,12 @@ class ODBCExport implements FromCollection, WithHeadings, ShouldAutoSize
     public function headings(): array
     {
         $heading = [
+            'Product No',
+            'Ndc',
             'Name',
+            'Strength',
+            'Form',
+            'Count',
             'Gpw',
             'Cardinal',
             'Exirx',

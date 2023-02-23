@@ -8,6 +8,7 @@ use App\Models\CardinalHealth;
 use App\Models\ExportAllProduct;
 use App\Models\FDA;
 use App\Models\FileCategory;
+use App\Models\ProductPackageCombination;
 use App\Models\TrendingProduct;
 use Carbon\Carbon;
 use Google\Client;
@@ -76,18 +77,21 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[6])) {
-                $ndc = str_replace('-', '', $row[6]);
-                $fdaData = FDA::where('ndc_match', $ndc)->first();
-                if (!empty($fdaData)) {
-                    $fdaData = $fdaData->toArray();
+                $correctNdc = ndcCorrection($row[6]);
+                $ndc = str_replace('-', '', $correctNdc);
+                $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
+                $fdaData = [];
+                if (!empty($fda)) {
+                    $fdaData = $fda->toArray();
                 }
+                $arrProductListing[$count]['product_no'] = isset($row[0]) ? $row[0] : '';
                 $arrProductListing[$count]['desc_one'] = isset($row[1]) ? $row[1] : '';
                 $arrProductListing[$count]['vendor'] = isset($row[5]) ? $row[5] : '';
-                $arrProductListing[$count]['ndc'] = isset($row[6]) ? ndcCorrection($row[6]) : '';
-                $arrProductListing[$count]['list_price'] = isset($row[4]) ? $row[4] : '';
+                $arrProductListing[$count]['ndc'] = isset($correctNdc) ? $correctNdc : '';
+                $arrProductListing[$count]['list_price'] = isset($row[4]) ? str_replace('$', '', $row[4]) : '';
                 $arrProductListing[$count]['name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
-                $arrProductListing[$count]['strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
-                $arrProductListing[$count]['form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrProductListing[$count]['strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] . ' ' . $fdaData['unit'] : '';
+                $arrProductListing[$count]['form'] = !empty($fdaData['dosage_form']) ? $fdaData['dosage_form'] : '';
                 $arrProductListing[$count]['count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
                 $arrProductListing[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
                 $arrProductListing[$count]['gpw'] = 'Gpw';
@@ -117,13 +121,15 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[1])) {
-                $ndc = str_replace('-', '', $row[1]);
-                $fda = FDA::where('ndc_match', $ndc)->first();
+                $correctNdc = ndcCorrection($row[1]);
+                $ndc = str_replace('-', '', $correctNdc);
+                $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
+                $fdaData = [];
                 if (!empty($fda)) {
                     $fdaData = $fda->toArray();
                 }
                 $arrCardinal[$count]['cin_ndc_upc'] = isset($row[0]) ? $row[0] : '';
-                $arrCardinal[$count]['cin_ndc_upc1'] = isset($row[1]) ? $row[1] : '';
+                $arrCardinal[$count]['cin_ndc_upc1'] = isset($correctNdc) ? $correctNdc : '';
                 $arrCardinal[$count]['trade_name_mfr'] = isset($row[2]) ? $row[2] : '';
                 $arrCardinal[$count]['trade_name_mfr2'] = isset($row[3]) ? $row[3] : '';
                 $arrCardinal[$count]['strength'] = isset($row[4]) ? $row[4] : '';
@@ -131,12 +137,12 @@ class UploadFileController extends Controller
                 $arrCardinal[$count]['size'] = isset($row[6]) ? $row[6] : '';
                 $arrCardinal[$count]['type'] = isset($row[7]) ? $row[7] : '';
                 $arrCardinal[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
-                $arrCardinal[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
-                $arrCardinal[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrCardinal[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] . ' ' . $fdaData['unit'] : '';
+                $arrCardinal[$count]['fda_form'] = !empty($fdaData['dosage_form']) ? $fdaData['dosage_form'] : '';
                 $arrCardinal[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
                 $arrCardinal[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
                 $arrCardinal[$count]['net_cost'] = isset($row[8]) ? $row[8] : '';
-                $arrCardinal[$count]['invoice_cost'] = isset($row[9]) ? $row[9] : '';
+                $arrCardinal[$count]['invoice_cost'] = isset($row[9]) ? str_replace('$', '', $row[9]) : '';
                 $arrCardinal[$count]['cardinal'] = 'Cardinal';
                 $arrCardinal[$count]['created_at'] = now();
                 $arrCardinal[$count]['updated_at'] = now();
@@ -165,18 +171,20 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[1])) {
-                $ndc = str_replace('-', '', $row[0]);
-                $fda = FDA::where('ndc_match', $ndc)->first();
+                $correctNdc = ndcCorrection($row[0]);
+                $ndc = str_replace('-', '', $correctNdc);
+                $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
+                $fdaData = [];
                 if (!empty($fda)) {
                     $fdaData = $fda->toArray();
                 }
                 $arrExport[$count]['name'] = isset($row[1]) ? $row[1] : '';
                 $arrExport[$count]['vendor'] = '';
-                $arrExport[$count]['ndc'] = isset($row[0]) ? ndcCorrection($row[0]) : '';
-                $arrExport[$count]['price'] = isset($row[7]) ? $row[7] : '';
+                $arrExport[$count]['ndc'] = isset($correctNdc) ? $correctNdc : '';
+                $arrExport[$count]['price'] = isset($row[7]) ? str_replace('$', '', $row[7]) : '';
                 $arrExport[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
-                $arrExport[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
-                $arrExport[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrExport[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] . ' ' . $fdaData['unit'] : '';
+                $arrExport[$count]['fda_form'] = !empty($fdaData['dosage_form']) ? $fdaData['dosage_form'] : '';
                 $arrExport[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
                 $arrExport[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
                 $arrExport[$count]['wholesaler'] = 'EzriRx';
@@ -206,12 +214,14 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[1])) {
-                $ndc = str_replace('-', '', $row[1]);
-                $fda = FDA::where('ndc_match', $ndc)->first();
+                $correctNdc = ndcCorrection($row[1]);
+                $ndc = str_replace('-', '', $correctNdc);
+                $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
+                $fdaData = [];
                 if (!empty($fda)) {
                     $fdaData = $fda->toArray();
                 }
-                $arrTrending[$count]['ndc'] = isset($row[1]) ? ndcCorrection($row[1]) : '';
+                $arrTrending[$count]['ndc'] = isset($correctNdc) ? $correctNdc : '';
                 $arrTrending[$count]['product_name'] = isset($row[2]) ? $row[2] : '';
                 $arrTrending[$count]['strength'] = isset($row[3]) ? $row[3] : '';
                 $arrTrending[$count]['package_size'] = isset($row[4]) ? $row[4] : '';
@@ -221,10 +231,10 @@ class UploadFileController extends Controller
                 $arrTrending[$count]['low_sold_price'] = isset($row[8]) ? $row[8] : '';
                 $arrTrending[$count]['avg_sold_price'] = isset($row[9]) ? $row[9] : '';
                 $arrTrending[$count]['high_sold_price'] = isset($row[10]) ? $row[10] : '';
-                $arrTrending[$count]['best_price_today'] = isset($row[11]) ? $row[11] : '';
+                $arrTrending[$count]['best_price_today'] = isset($row[11]) ? str_replace('$', '', $row[11]) : '';
                 $arrTrending[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
-                $arrTrending[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
-                $arrTrending[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrTrending[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] . ' ' . $fdaData['unit'] : '';
+                $arrTrending[$count]['fda_form'] = !empty($fdaData['dosage_form']) ? $fdaData['dosage_form'] : '';
                 $arrTrending[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
                 $arrTrending[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
                 $arrTrending[$count]['trxade'] = 'Trxade';
@@ -254,19 +264,21 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[3])) {
-                $ndc = str_replace('-', '', $row[3]);
-                $fda = FDA::where('ndc_match', $ndc)->first();
+                $correctNdc = ndcCorrection($row[3]);
+                $ndc = str_replace('-', '', $correctNdc);
+                $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
+                $fdaData = [];
                 if (!empty($fda)) {
                     $fdaData = $fda->toArray();
                 }
                 $arrAuburn[$count]['description'] = isset($row[9]) ? $row[9] : '';
                 $arrAuburn[$count]['vendor'] = isset($row[11]) ? $row[11] : '';
-                $arrAuburn[$count]['ndc'] = isset($row[3]) ? ndcCorrection($row[3]) : '';
-                $arrAuburn[$count]['price'] = isset($row[26]) ? $row[26] : '';
+                $arrAuburn[$count]['ndc'] = isset($correctNdc) ? $correctNdc : '';
+                $arrAuburn[$count]['price'] = isset($row[26]) ? str_replace('$', '', $row[26]) : '';
                 $arrAuburn[$count]['wholesaler'] = 'Auburn';
                 $arrAuburn[$count]['fda_name'] = !empty($fdaData['name']) ? $fdaData['name'] : '';
-                $arrAuburn[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] : '';
-                $arrAuburn[$count]['fda_form'] = !empty($fdaData['form']) ? $fdaData['form'] : '';
+                $arrAuburn[$count]['fda_strength'] = !empty($fdaData['strength']) ? $fdaData['strength'] . ' ' . $fdaData['unit'] : '';
+                $arrAuburn[$count]['fda_form'] = !empty($fdaData['dosage_form']) ? $fdaData['dosage_form'] : '';
                 $arrAuburn[$count]['fda_count'] = !empty($fdaData['count']) ? $fdaData['count'] : '';
                 $arrAuburn[$count]['fda_ndc'] = !empty($fdaData['ndc']) ? $fdaData['ndc'] : '';
                 $arrAuburn[$count]['created_at'] = now();
