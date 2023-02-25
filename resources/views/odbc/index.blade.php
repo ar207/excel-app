@@ -3,8 +3,30 @@
 @section('content')
     <style>
         .cursor-pointer {
-            cursor: pointer;
+            cursor: pointer !important;
         }
+
+        .decoration-none {
+            text-decoration: none !important;
+        }
+
+        span {
+            font-style: italic;
+            position: relative
+        }
+
+        span:hover::after {
+            background: #add8e6;
+            border-radius: 4px;
+            content: attr(data-title);
+            display: block;
+            right: 100%;
+            padding: 1em;
+            position: absolute;
+            width: 300px;
+            z-index: 1;
+        }
+
     </style>
     <div class="container">
         <div class="row justify-content-center">
@@ -46,12 +68,39 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="dataModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close font-15" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>NDC</th>
+                            <th>Name</th>
+                            <th>Strength</th>
+                            <th>Form</th>
+                            <th>Count</th>
+                            <th>Price</th>
+                            </thead>
+                            <tbody id="price-data"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
         let page = 1;
         $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
             getData();
         });
 
@@ -87,24 +136,74 @@
                 type: 'get',
                 data: formData,
                 success: function (response) {
+                    console.log(response.data.odbc.data);
                     let html = '', count = 1;
                     if (!empty(response.data.odbc)) {
                         $.each(response.data.odbc.data, function (i, v) {
-                            let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData;
+                            let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData = '',
+                                cardinalFull = '', exportFull = '', trendingFull = '', auburnFull = '';
                             if (v.gpw_price != '-') {
                                 gpwData = 'NDC:' + v.ndc + ' Name:' + v.name + ' Strength:' + v.strength + ' Form:' + v.form + ' Count:' + v.count;
                             }
                             if (v.cardinal_price != '-') {
-                                cardinalData = 'NDC:' + v.cardinal_data.fda_ndc + ' Name:' + v.cardinal_data.fda_name + ' Strength:' + v.cardinal_data.fda_strength + ' Count:' + v.cardinal_data.fda_count;
+                                if (!empty(v.cardinal_full)) {
+                                    $.each(v.cardinal_full, function (ii, vv) {
+                                        cardinalFull += '<tr>' +
+                                            '   <td>' + vv.cin_ndc_upc1 + '</td>' +
+                                            '   <td>' + vv.fda_name + '</td>' +
+                                            '   <td>' + vv.fda_strength + '</td>' +
+                                            '   <td>' + vv.fda_form + '</td>' +
+                                            '   <td>' + vv.fda_count + '</td>' +
+                                            '   <td>$' + vv.invoice_cost + '</td>' +
+                                            '</tr>';
+                                    });
+                                }
+                                cardinalData = 'NDC:' + v.cardinal_data.cin_ndc_upc1 + ' Name:' + v.cardinal_data.fda_name + ' Strength:' + v.cardinal_data.fda_strength + ' Count:' + v.cardinal_data.fda_count;
                             }
                             if (v.export_price != '-') {
-                                exportData = 'NDC:' + v.export_data.fda_ndc + ' Name:' + v.export_data.fda_name + ' Strength:' + v.export_data.fda_strength + ' Count:' + v.export_data.fda_count;
+                                if (!empty(v.export_full)) {
+                                    $.each(v.export_full, function (ii, vv) {
+                                        exportFull += '<tr>' +
+                                            '   <td>' + vv.ndc + '</td>' +
+                                            '   <td>' + vv.fda_name + '</td>' +
+                                            '   <td>' + vv.fda_strength + '</td>' +
+                                            '   <td>' + vv.fda_form + '</td>' +
+                                            '   <td>' + vv.fda_count + '</td>' +
+                                            '   <td>$' + vv.price + '</td>' +
+                                            '</tr>';
+                                    });
+                                }
+                                exportData = 'NDC:' + v.export_data.ndc + ' Name:' + v.export_data.fda_name + ' Strength:' + v.export_data.fda_strength + ' Count:' + v.export_data.fda_count;
                             }
                             if (v.trending_price != '-') {
-                                trendingData = 'NDC:' + v.trending_data.fda_ndc + ' Name:' + v.trending_data.fda_name + ' Strength:' + v.trending_data.fda_strength + ' Count:' + v.trending_data.fda_count;
+                                if (!empty(v.trending_full)) {
+                                    $.each(v.trending_full, function (ii, vv) {
+                                        trendingFull += '<tr>' +
+                                            '   <td>' + vv.ndc + '</td>' +
+                                            '   <td>' + vv.fda_name + '</td>' +
+                                            '   <td>' + vv.fda_strength + '</td>' +
+                                            '   <td>' + vv.fda_form + '</td>' +
+                                            '   <td>' + vv.fda_count + '</td>' +
+                                            '   <td>$' + vv.best_price_today + '</td>' +
+                                            '</tr>';
+                                    });
+                                }
+                                trendingData = 'NDC:' + v.trending_data.ndc + ' Name:' + v.trending_data.fda_name + ' Strength:' + v.trending_data.fda_strength + ' Count:' + v.trending_data.fda_count;
                             }
                             if (v.auburn_price != '-') {
-                                auburnData = 'NDC:' + v.auburn_data.fda_ndc + ' Name:' + v.auburn_data.fda_name + ' Strength:' + v.auburn_data.fda_strength + ' Count:' + v.auburn_data.fda_count;
+                                if (!empty(v.auburn_full)) {
+                                    $.each(v.auburn_full, function (ii, vv) {
+                                        auburnFull += '<tr>' +
+                                            '   <td>' + vv.ndc + '</td>' +
+                                            '   <td>' + vv.fda_name + '</td>' +
+                                            '   <td>' + vv.fda_strength + '</td>' +
+                                            '   <td>' + vv.fda_form + '</td>' +
+                                            '   <td>' + vv.fda_count + '</td>' +
+                                            '   <td>$' + vv.price + '</td>' +
+                                            '</tr>';
+                                    });
+                                }
+                                auburnData = 'NDC:' + v.auburn_data.ndc + ' Name:' + v.auburn_data.fda_name + ' Strength:' + v.auburn_data.fda_strength + ' Count:' + v.auburn_data.fda_count;
                             }
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
@@ -114,11 +213,11 @@
                                 '   <td>' + v.strength + '</td>' +
                                 '   <td>' + v.form + '</td>' +
                                 '   <td>' + v.count + '</td>' +
-                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + gpwData + '">' + v.gpw_price + '</a></td>' +
-                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + cardinalData + '">' + v.cardinal_price + '</a></td>' +
-                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + exportData + '">' + v.export_price + '</a></td>' +
-                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + trendingData + '">' + v.trending_price + '</a></td>' +
-                                '   <td><a class="cursor-pointer" data-toggle="tooltip" data-html="true" title="' + auburnData + '">' + v.auburn_price + '</a></td>' +
+                                '   <td><span class="cursor-pointer decoration-none" data-title="' + gpwData + '">' + v.gpw_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-html="' + cardinalFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + cardinalData + '">' + v.cardinal_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-html="' + exportFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + exportData + '">' + v.export_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-html="' + trendingFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + trendingData + '">' + v.trending_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-html="' + auburnFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + auburnData + '">' + v.auburn_price + '</span></td>' +
                                 '</tr>';
                             count++;
                         });
@@ -135,6 +234,12 @@
                 }
             })
         }
+
+        $('body').on('click', '.total-prices-data', function () {
+            const data = $(this).attr('data-html');
+            $('#price-data').html('').html(data);
+            $('#dataModal').modal('show');
+        });
 
         function showLoader() {
             $('#preloader').show();

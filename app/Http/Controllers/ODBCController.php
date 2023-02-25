@@ -74,21 +74,25 @@ class ODBCController extends Controller
             foreach ($activeData as $key => $row) {
                 $search = '%' . $row->name . '%';
                 $minCardinal = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min('invoice_cost');
-                $minExport = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('price')->min("price");
-                $minTrending = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('best_price_today')->min("best_price_today");
-                $minAuburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->whereNotNull('price')->min("price");
+                $minExport = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min("price");
+                $minTrending = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min("best_price_today");
+                $minAuburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min("price");
                 $cardinal = $export = $trending = $auburn = [];
                 if (!empty($minCardinal)) {
                     $cardinal = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                    $cardinalArray = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->toArray();
                 }
                 if (!empty($minExport)) {
                     $export = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                    $exportArray = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->toArray();
                 }
                 if (!empty($minTrending)) {
                     $trending = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                    $trendingArray = TrendingProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->toArray();
                 }
                 if (!empty($minAuburn)) {
                     $auburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
+                    $auburnArray = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->toArray();
                 }
                 $arr[$key]['product_no'] = $row->product_no;
                 $arr[$key]['ndc'] = $row->fda_ndc;
@@ -103,9 +107,13 @@ class ODBCController extends Controller
                 $arr[$key]['auburn_price'] = !empty($minAuburn) ? '$' . str_replace('$', '', $minAuburn) : '-';
                 if (empty($isExport)) {
                     $arr[$key]['cardinal_data'] = !empty($cardinal) ? $cardinal->toArray() : [];
+                    $arr[$key]['cardinal_full'] = !empty($cardinalArray) ? $cardinalArray : [];
                     $arr[$key]['export_data'] = !empty($export) ? $export->toArray() : [];
+                    $arr[$key]['export_full'] = !empty($exportArray) ? $exportArray : [];
                     $arr[$key]['trending_data'] = !empty($trending) ? $trending->toArray() : [];
+                    $arr[$key]['trending_full'] = !empty($trendingArray) ? $trendingArray : [];
                     $arr[$key]['auburn_data'] = !empty($auburn) ? $auburn->toArray() : [];
+                    $arr[$key]['auburn_full'] = !empty($auburnArray) ? $auburnArray : [];
                 }
             }
         }
