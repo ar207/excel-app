@@ -73,6 +73,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h6 class="modal-title" id="modal-header"></h6>
                     <button type="button" class="close font-15" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
@@ -214,10 +215,10 @@
                                 '   <td>' + v.form + '</td>' +
                                 '   <td>' + v.count + '</td>' +
                                 '   <td><span class="cursor-pointer decoration-none" data-title="' + gpwData + '">' + v.gpw_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-html="' + cardinalFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + cardinalData + '">' + v.cardinal_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-html="' + exportFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + exportData + '">' + v.export_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-html="' + trendingFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + trendingData + '">' + v.trending_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-html="' + auburnFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + auburnData + '">' + v.auburn_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-header="Cardinal" data-html="' + cardinalFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + cardinalData + '">' + v.cardinal_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-header="Ezirx" data-html="' + exportFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + exportData + '">' + v.export_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-header="Trxade" data-html="' + trendingFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + trendingData + '">' + v.trending_price + '</span></td>' +
+                                '   <td><span data-toggle="modal" data-header="Auburn" data-html="' + auburnFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + auburnData + '">' + v.auburn_price + '</span></td>' +
                                 '</tr>';
                             count++;
                         });
@@ -237,6 +238,8 @@
 
         $('body').on('click', '.total-prices-data', function () {
             const data = $(this).attr('data-html');
+            const header = $(this).attr('data-header');
+            $('#modal-header').html('').html(header);
             $('#price-data').html('').html(data);
             $('#dataModal').modal('show');
         });
