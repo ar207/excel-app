@@ -557,7 +557,11 @@ class UploadFileController extends Controller
         $client->setApplicationName('Google sheet demo');
         $client->setRedirectUri('http://127.0.0.1:8000/home');
         $client->setScopes(Sheets::SPREADSHEETS);
-        $client->setAuthConfig('credentials2.json');
+        if (env('APP_ENV') == 'local') {
+            $client->setAuthConfig('credentials2.json');
+        } else {
+            $client->setAuthConfig('credentials.json');
+        }
         $client->setAccessType('offline');
 
         return $client;
