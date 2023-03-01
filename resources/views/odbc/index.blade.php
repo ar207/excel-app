@@ -45,6 +45,9 @@
                         </div>
                     </div>
                     <div class="table-responsive">
+                        <div class="form-group m-2">
+                            <input class="form-control" type="search" id="search" placeholder="Search....">
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <th>#</th>
@@ -100,7 +103,7 @@
 @endsection
 @section('scripts')
     <script>
-        let page = 1;
+        let page = 1, search = '';
         $(document).ready(function () {
             getData();
         });
@@ -114,6 +117,13 @@
         function empty(val) {
             return !(!!val ? typeof val === 'object' ? Array.isArray(val) ? !!val.length : !!Object.keys(val).length : true : false);
         }
+
+        $('body').on('keyup', '#search', function (e) {
+            if (e.keyCode == 13) {
+                search = $(this).val();
+                getData();
+            }
+        });
 
         $(document).on("click", '.paq-pager ul.pagination a', function (e) {
             e.preventDefault();
@@ -131,6 +141,7 @@
                 '_token': "{{ csrf_token() }}",
                 page: page,
                 per_page: 10,
+                search: search
             };
             $.ajax({
                 url: "{{ url('odbc/data') }}",

@@ -461,8 +461,11 @@ class UploadFileController extends Controller
     {
         $this->client = $this->getClient();
         $this->service = new Sheets($this->client);
-        $this->documentId = '1ROWFwumLf-nCeA1-dF30AZKp12J103pLAjIIxQ_FbKE';
-//        $this->documentId = '1VZzH9zs_H8XsRWnGqyph-xU6JYxiAaOvcY5-q9VmDdw';
+        if (env('APP_ENV') == 'local') {
+            $this->documentId = '1ROWFwumLf-nCeA1-dF30AZKp12J103pLAjIIxQ_FbKE';
+        } else {
+            $this->documentId = '1VZzH9zs_H8XsRWnGqyph-xU6JYxiAaOvcY5-q9VmDdw';
+        }
         $this->range = 'A:Z';
 
         $body = new Sheets\ValueRange([

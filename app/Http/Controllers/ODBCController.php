@@ -36,7 +36,7 @@ class ODBCController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $arr = $this->getOdbcData();
+        $arr = $this->getOdbcData($data['search']);
 
         $this->data['odbc'] = paginateArrayData($arr, $data['per_page'], $data['page']);
         $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($arr));
@@ -53,7 +53,7 @@ class ODBCController extends Controller
     {
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $arrayData = $this->getOdbcData(1);
+        $arrayData = $this->getOdbcData('', 1);
         $response = Excel::download(new ODBCExport($arrayData), 'ODBC.xlsx', \Maatwebsite\Excel\Excel::XLSX);
         ob_end_clean();
 
@@ -63,15 +63,28 @@ class ODBCController extends Controller
     /**
      * This is used to get odbc data
      *
+     * @param string $search
      * @param int $isExport
      * @return array
      */
-    private function getOdbcData($isExport = 0)
+    private function getOdbcData($search = '', $isExport = 0)
     {
-        $activeData = ActiveProductListing::where('name', '!=', '')->get();
+        $activeData = ActiveProductListing::where('name', '!=', '');
+        if (!empty($search)) {
+            $searchData = $search;
+            $activeData->where(function ($query) use ($searchData) {
+                    $query->where('product_no', '=', $searchData)
+                        ->orWhere('ndc', 'rlike', $searchData)
+                        ->orWhere('name', 'rlike', $searchData)
+                        ->orWhere('strength', 'rlike', $searchData)
+                        ->orWhere('form', 'rlike', $searchData)
+                        ->orWhere('count', 'rlike', $searchData);
+                });
+        }
+        $data = $activeData->get();
         $arr = [];
-        if (!empty($activeData)) {
-            foreach ($activeData as $key => $row) {
+        if (!empty($data)) {
+            foreach ($data as $key => $row) {
                 $search = '%' . $row->name . '%';
                 $minCardinal = CardinalHealth::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min('invoice_cost');
                 $minExport = ExportAllProduct::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->min("price");
