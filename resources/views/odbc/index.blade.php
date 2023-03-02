@@ -65,7 +65,6 @@
                             </thead>
                             <tbody id="page-data"></tbody>
                         </table>
-                        <div class="m-3 paq-pager"></div>
                     </div>
                 </div>
             </div>
@@ -103,7 +102,7 @@
 @endsection
 @section('scripts')
     <script>
-        let page = 1, search = '';
+        let search = '';
         $(document).ready(function () {
             getData();
         });
@@ -119,15 +118,7 @@
         }
 
         $('body').on('keyup', '#search', function (e) {
-            if (e.keyCode == 13) {
-                search = $(this).val();
-                getData();
-            }
-        });
-
-        $(document).on("click", '.paq-pager ul.pagination a', function (e) {
-            e.preventDefault();
-            page = $(this).attr('href').split('page=')[1];
+            search = $(this).val();
             getData();
         });
 
@@ -139,8 +130,6 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                page: page,
-                per_page: 10,
                 search: search
             };
             $.ajax({
@@ -148,10 +137,9 @@
                 type: 'get',
                 data: formData,
                 success: function (response) {
-                    console.log(response.data.odbc.data);
                     let html = '', count = 1;
                     if (!empty(response.data.odbc)) {
-                        $.each(response.data.odbc.data, function (i, v) {
+                        $.each(response.data.odbc, function (i, v) {
                             let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData = '',
                                 cardinalFull = '', exportFull = '', trendingFull = '', auburnFull = '';
                             if (v.gpw_price != '-') {
@@ -235,9 +223,6 @@
                         });
                     }
                     $('#page-data').html('').html(html);
-                    if (response.data.pager !== 'undefined') {
-                        $('.paq-pager').show().html(response.data.pager);
-                    }
                     hideLoader();
                 },
                 error: function (error) {

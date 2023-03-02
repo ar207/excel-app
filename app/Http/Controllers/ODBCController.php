@@ -26,6 +26,143 @@ class ODBCController extends Controller
     }
 
     /**
+     * Used to return index of specific resource
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function allFiles()
+    {
+        return view('all-files.index');
+    }
+
+    /**
+     * Used to get all uploaded files data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function odbcAllData(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $this->data = ActiveProductListing::where(function ($query) use ($searchData) {
+                $query->where('product_no', 'rlike', $searchData)
+                    ->orWhere('ndc', 'rlike', $searchData)
+                    ->orWhere('desc_one', 'rlike', $searchData)
+                    ->orWhere('vendor', 'rlike', $searchData)
+                    ->orWhere('list_price', 'rlike', $searchData);
+            })->get();
+        } else {
+            $this->data = ActiveProductListing::get();
+        }
+
+        return response()->json(['data' => $this->data]);
+    }
+
+    /**
+     * Used to get all uploaded files data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function cardinalData(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $this->data = CardinalHealth::where(function ($query) use ($searchData) {
+                $query->where('cin_ndc_upc1', 'rlike', $searchData)
+                    ->orWhere('trade_name_mfr', 'rlike', $searchData)
+                    ->orWhere('trade_name_mfr2', 'rlike', $searchData)
+                    ->orWhere('strength', 'rlike', $searchData)
+                    ->orWhere('from', 'rlike', $searchData)
+                    ->orWhere('size', 'rlike', $searchData)
+                    ->orWhere('type', 'rlike', $searchData)
+                    ->orWhere('invoice_cost', 'rlike', $searchData);
+            })->get();
+        } else {
+            $this->data = CardinalHealth::get();
+        }
+
+        return response()->json(['data' => $this->data]);
+    }
+
+    /**
+     * Used to get all uploaded files data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function ezirxData(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $this->data = ExportAllProduct::where(function ($query) use ($searchData) {
+                $query->where('name', 'rlike', $searchData)
+                    ->orWhere('ndc', 'rlike', $searchData)
+                    ->orWhere('vendor', 'rlike', $searchData)
+                    ->orWhere('price', 'rlike', $searchData);
+            })->get();
+        } else {
+            $this->data = ExportAllProduct::get();
+        }
+
+        return response()->json(['data' => $this->data]);
+    }
+
+    /**
+     * Used to get all uploaded files data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function txradeData(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $this->data = TrendingProduct::where(function ($query) use ($searchData) {
+                $query->where('product_name', 'rlike', $searchData)
+                    ->orWhere('ndc', 'rlike', $searchData)
+                    ->orWhere('strength', 'rlike', $searchData)
+                    ->orWhere('from', 'rlike', $searchData)
+                    ->orWhere('mfr', 'rlike', $searchData)
+                    ->orWhere('best_price_today', 'rlike', $searchData);
+            })->get();
+        } else {
+            $this->data = TrendingProduct::get();
+        }
+
+        return response()->json(['data' => $this->data]);
+    }
+
+    /**
+     * Used to get all uploaded files data
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function auburnData(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $this->data = AuburnPharmaceutical::where(function ($query) use ($searchData) {
+                $query->where('description', 'rlike', $searchData)
+                    ->orWhere('ndc', 'rlike', $searchData)
+                    ->orWhere('vendor', 'rlike', $searchData)
+                    ->orWhere('price', 'rlike', $searchData);
+            })->get();
+        } else {
+            $this->data = AuburnPharmaceutical::get();
+        }
+
+        return response()->json(['data' => $this->data]);
+    }
+
+    /**
      * This is used to get odbc data
      *
      * @param Request $request
@@ -36,10 +173,7 @@ class ODBCController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $arr = $this->getOdbcData($data['search']);
-
-        $this->data['odbc'] = paginateArrayData($arr, $data['per_page'], $data['page']);
-        $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($arr));
+        $this->data['odbc'] = $this->getOdbcData($data['search']);
 
         return response()->json(['data' => $this->data]);
     }
@@ -73,13 +207,13 @@ class ODBCController extends Controller
         if (!empty($search)) {
             $searchData = $search;
             $activeData->where(function ($query) use ($searchData) {
-                    $query->where('product_no', '=', $searchData)
-                        ->orWhere('ndc', 'rlike', $searchData)
-                        ->orWhere('name', 'rlike', $searchData)
-                        ->orWhere('strength', 'rlike', $searchData)
-                        ->orWhere('form', 'rlike', $searchData)
-                        ->orWhere('count', 'rlike', $searchData);
-                });
+                $query->where('product_no', 'rlike', $searchData)
+                    ->orWhere('ndc', 'rlike', $searchData)
+                    ->orWhere('name', 'rlike', $searchData)
+                    ->orWhere('strength', 'rlike', $searchData)
+                    ->orWhere('form', 'rlike', $searchData)
+                    ->orWhere('count', 'rlike', $searchData);
+            });
         }
         $data = $activeData->get();
         $arr = [];

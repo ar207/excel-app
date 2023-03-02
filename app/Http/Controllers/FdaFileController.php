@@ -145,7 +145,18 @@ class FdaFileController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $fda = ProductPackageCombination::get();
+        if (!empty($data['search'])) {
+            $searchData = $data['search'];
+            $fda = ProductPackageCombination::where(function ($query) use ($searchData) {
+                $query->where('ndc', 'rlike', $searchData)
+                    ->orWhere('name', 'rlike', $searchData)
+                    ->orWhere('strength', 'rlike', $searchData)
+                    ->orWhere('dosage_form', 'rlike', $searchData)
+                    ->orWhere('count', 'rlike', $searchData);
+            })->get();
+        } else {
+            $fda = ProductPackageCombination::get();
+        }
 
         $this->data['fda'] = paginateArrayData($fda, $data['per_page'], $data['page']);
         $this->data['pager'] = make_complete_pagination_block($this->data['fda'], count($fda));

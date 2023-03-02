@@ -57,6 +57,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('all/files') }}">
+                                    All Files Data
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('fda/files') }}">
                                     FDA Files Upload
                                 </a>

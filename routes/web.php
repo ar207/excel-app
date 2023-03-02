@@ -28,6 +28,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('odbc', [\App\Http\Controllers\ODBCController::class, 'index']);
     Route::get('odbc/data', [\App\Http\Controllers\ODBCController::class, 'getData']);
     Route::get('odbc/export', [\App\Http\Controllers\ODBCController::class, 'exportToExcel']);
+    Route::get('all/files', [\App\Http\Controllers\ODBCController::class, 'allFiles']);
+    Route::get('odbc/all/data', [\App\Http\Controllers\ODBCController::class, 'odbcAllData']);
+    Route::get('cardinal/data', [\App\Http\Controllers\ODBCController::class, 'cardinalData']);
+    Route::get('ezirx/data', [\App\Http\Controllers\ODBCController::class, 'ezirxData']);
+    Route::get('txrade/data', [\App\Http\Controllers\ODBCController::class, 'txradeData']);
+    Route::get('auburn/data', [\App\Http\Controllers\ODBCController::class, 'auburnData']);
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

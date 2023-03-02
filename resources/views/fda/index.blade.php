@@ -9,6 +9,9 @@
                         <h6 class="h6">FDA</h6>
                     </div>
                     <div class="table-responsive">
+                        <div class="form-group m-2">
+                            <input class="form-control" type="search" id="search" placeholder="Search....">
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <th>#</th>
@@ -29,7 +32,7 @@
 @endsection
 @section('scripts')
     <script>
-        let page = 1;
+        let search = '', page = 1;
         $(document).ready(function () {
             getData();
         });
@@ -50,12 +53,18 @@
             getData();
         });
 
+        $('body').on('keyup', '#search', function (e) {
+            search = $(this).val();
+            getData();
+        });
+
         function getData() {
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
                 page: page,
-                per_page: 10,
+                per_page: 1000,
+                search: search
             };
             $.ajax({
                 url: "{{ url('fda/data') }}",

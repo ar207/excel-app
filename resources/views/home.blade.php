@@ -125,7 +125,7 @@
                 },
                 error: function (error) {
                     hideLoader();
-                    swal('Error', error.statusText, 'error');
+                    swal('Error', error.responseJSON.message, 'error');
                 }
             })
         });
