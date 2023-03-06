@@ -7,6 +7,9 @@
         <th>#</th>
         <th>Ndc</th>
         <th>Name</th>
+        <th>Form</th>
+        <th>Strength</th>
+        <th>Count</th>
         <th>Vendor</th>
         <th>Price</th>
         </thead>

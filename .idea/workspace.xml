@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85437ca4-9e97-4d81-ba96-11cdabd85ef2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Pc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Pc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/PackageImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/PackageImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/odbc/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/odbc/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,15 +90,15 @@
         <counts>
           <entry key="env" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="21997" />
+          <entry key="php" value="23090" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="6663" />
+          <entry key="Blade" value="7279" />
           <entry key="HTML" value="5" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="15329" />
+          <entry key="PHP" value="15806" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -107,13 +110,13 @@
           <entry key="html" value="2" />
           <entry key="js" value="4" />
           <entry key="json" value="13" />
-          <entry key="php" value="165" />
+          <entry key="php" value="174" />
           <entry key="ts" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="26" />
+          <entry key="Blade" value="35" />
           <entry key="CSS" value="5" />
           <entry key="HTML" value="2" />
           <entry key="Image" value="1" />
@@ -128,11 +131,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="178" column="96" selection-start-line="178" selection-start-column="96" selection-end-line="178" selection-end-column="96" />
+            <state relative-caret-position="-62">
+              <caret line="197" column="40" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
               <folding>
                 <element signature="e#40#67#0#PHP" expanded="true" />
               </folding>
@@ -140,11 +143,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/all-files/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+            <state relative-caret-position="176">
+              <caret line="315" column="32" selection-start-line="315" selection-start-column="32" selection-end-line="315" selection-end-column="32" />
+              <folding>
+                <element signature="e#213#2098#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -161,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="187" column="35" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+            <state relative-caret-position="349">
+              <caret line="203" column="37" lean-forward="true" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -187,7 +211,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>format</find>
       <find>backg</find>
       <find>backgroundColorType</find>
       <find>repeatCell</find>
@@ -217,6 +240,7 @@
       <find>tooltip</find>
       <find>search</find>
       <find>CardinalHealth</find>
+      <find>name</find>
     </findStrings>
     <replaceStrings>
       <replace>required</replace>
@@ -266,20 +290,20 @@
         <option value="$PROJECT_DIR$/resources/views/fda/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/odbc/all-files.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/Imports/PackageImport.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php" />
+        <option value="$PROJECT_DIR$/resources/views/odbc/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/app/Imports/PackageImport.php" />
+        <option value="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" />
         <option value="$PROJECT_DIR$/app/Helpers/helpers.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php" />
-        <option value="$PROJECT_DIR$/resources/views/odbc/index.blade.php" />
       </list>
     </option>
   </component>
@@ -444,16 +468,6 @@
             <path>
               <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="excel-app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
@@ -632,12 +646,12 @@
       <workItem from="1677854914798" duration="3739000" />
       <workItem from="1677911484083" duration="7733000" />
       <workItem from="1678092316542" duration="781000" />
-      <workItem from="1678107282338" duration="3305000" />
+      <workItem from="1678107282338" duration="10778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214294000" />
+    <option name="totallyTimeSpent" value="221767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -844,52 +858,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/storage/framework/views/3d99bf7714470a288ed7d381ab7ee9ab382bf6a0.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="58" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="6" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/fda/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
           <caret line="98" column="9" selection-start-line="60" selection-start-column="8" selection-end-line="98" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3349">
-          <caret line="197" column="18" selection-start-line="197" selection-start-column="18" selection-end-line="197" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="55" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -953,13 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="187" column="35" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -967,13 +932,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="178" column="96" selection-start-line="178" selection-start-column="96" selection-end-line="178" selection-end-column="96" />
-          <folding>
-            <element signature="e#40#67#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -981,6 +950,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="203" column="37" lean-forward="true" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="315" column="32" selection-start-line="315" selection-start-column="32" selection-end-line="315" selection-end-column="32" />
+          <folding>
+            <element signature="e#213#2098#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="197" column="40" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+          <folding>
+            <element signature="e#40#67#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

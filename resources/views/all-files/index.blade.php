@@ -1,47 +1,111 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="btn btn-primary m-2 file-data active" id="pills-odbc-tab" data-toggle="pill" data-target="#pills-odbc" type="button" role="tab" aria-controls="pills-odbc" aria-selected="true">ODBC</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="btn btn-primary m-2 file-data" id="pills-cardinal-tab" data-toggle="pill" data-target="#pills-cardinal" type="button" role="tab" aria-controls="pills-cardinal" aria-selected="false">Cardinal</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="btn btn-primary m-2 file-data" id="pills-ezirx-tab" data-toggle="pill" data-target="#pills-ezirx" type="button" role="tab" aria-controls="pills-ezirx" aria-selected="false">Ezirx</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="btn btn-primary m-2 file-data" id="pills-txrade-tab" data-toggle="pill" data-target="#pills-txrade" type="button" role="tab" aria-controls="pills-txrade" aria-selected="false">Txrade</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="btn btn-primary m-2 file-data" id="pills-auburn-tab" data-toggle="pill" data-target="#pills-auburn" type="button" role="tab" aria-controls="pills-auburn" aria-selected="false">Auburn</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content card-body" id="pills-tabContent">
-                        <div class="tab-pane included-files fade show active" id="pills-odbc" role="tabpanel" aria-labelledby="pills-odbc-tab">
-                            @include('all-files.partials._odbc')
-                        </div>
-                        <div class="tab-pane included-files fade" id="pills-cardinal" role="tabpanel" aria-labelledby="pills-cardinal-tab">
-                            @include('all-files.partials._cardinal')
-                        </div>
-                        <div class="tab-pane included-files fade" id="pills-ezirx" role="tabpanel" aria-labelledby="pills-ezirx-tab">
-                            @include('all-files.partials._ezrix')
-                        </div>
-                        <div class="tab-pane included-files fade" id="pills-txrade" role="tabpanel" aria-labelledby="pills-txrade-tab">
-                            @include('all-files.partials._txrade')
-                        </div>
-                        <div class="tab-pane included-files fade" id="pills-auburn" role="tabpanel" aria-labelledby="pills-auburn-tab">
-                            @include('all-files.partials._auburn')
-                        </div>
-                    </div>
+    <div class="card m-2">
+        <div class="card-header">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-primary m-2 file-data active" id="pills-odbc-tab" data-toggle="pill"
+                            data-target="#pills-odbc" type="button" role="tab" aria-controls="pills-odbc"
+                            aria-selected="true">ODBC
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-primary m-2 file-data" id="pills-cardinal-tab" data-toggle="pill"
+                            data-target="#pills-cardinal" type="button" role="tab" aria-controls="pills-cardinal"
+                            aria-selected="false">Cardinal
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-primary m-2 file-data" id="pills-ezirx-tab" data-toggle="pill"
+                            data-target="#pills-ezirx" type="button" role="tab" aria-controls="pills-ezirx"
+                            aria-selected="false">Ezirx
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-primary m-2 file-data" id="pills-txrade-tab" data-toggle="pill"
+                            data-target="#pills-txrade" type="button" role="tab" aria-controls="pills-txrade"
+                            aria-selected="false">Txrade
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-primary m-2 file-data" id="pills-auburn-tab" data-toggle="pill"
+                            data-target="#pills-auburn" type="button" role="tab" aria-controls="pills-auburn"
+                            aria-selected="false">Auburn
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content card-body" id="pills-tabContent">
+            <div class="tab-pane included-files fade show active" id="pills-odbc" role="tabpanel"
+                 aria-labelledby="pills-odbc-tab">
+                <div class="form-group">
+                    <label>
+                        Matched Results
+                        <input type="radio" checked name="odbc" class="fda-match-radio" value="1" id="odbc_match">
+                    </label>
+                    <label>
+                        Non Matched Results
+                        <input type="radio" name="odbc" class="fda-match-radio" value="0" id="odbc_non-match">
+                    </label>
                 </div>
+                @include('all-files.partials._odbc')
+            </div>
+            <div class="tab-pane included-files fade" id="pills-cardinal" role="tabpanel"
+                 aria-labelledby="pills-cardinal-tab">
+                <div class="form-group">
+                    <label>
+                        Matched Results
+                        <input type="radio" checked name="cardinal" class="fda-match-radio" value="1" id="cardinal_match">
+                    </label>
+                    <label>
+                        Non Matched Results
+                        <input type="radio" name="cardinal" class="fda-match-radio" value="0" id="cardinal_non-match">
+                    </label>
+                </div>
+                @include('all-files.partials._cardinal')
+            </div>
+            <div class="tab-pane included-files fade" id="pills-ezirx" role="tabpanel"
+                 aria-labelledby="pills-ezirx-tab">
+                <div class="form-group">
+                    <label>
+                        Matched Results
+                        <input type="radio" checked name="ezirx" class="fda-match-radio" value="1" id="ezirx_match">
+                    </label>
+                    <label>
+                        Non Matched Results
+                        <input type="radio" name="ezirx" class="fda-match-radio" value="0" id="ezirx_non-match">
+                    </label>
+                </div>
+                @include('all-files.partials._ezrix')
+            </div>
+            <div class="tab-pane included-files fade" id="pills-txrade" role="tabpanel"
+                 aria-labelledby="pills-txrade-tab">
+                <div class="form-group">
+                    <label>
+                        Matched Results
+                        <input type="radio" checked name="txrade" class="fda-match-radio" value="1" id="txrade_match">
+                    </label>
+                    <label>
+                        Non Matched Results
+                        <input type="radio" name="txrade" class="fda-match-radio" value="0" id="txrade_non-match">
+                    </label>
+                </div>
+                @include('all-files.partials._txrade')
+            </div>
+            <div class="tab-pane included-files fade" id="pills-auburn" role="tabpanel"
+                 aria-labelledby="pills-auburn-tab">
+                <div class="form-group">
+                    <label>
+                        Matched Results
+                        <input type="radio" checked name="auburn" class="fda-match-radio" value="1" id="auburn_match">
+                    </label>
+                    <label>
+                        Non Matched Results
+                        <input type="radio" name="auburn" class="fda-match-radio" value="0" id="auburn_non-match">
+                    </label>
+                </div>
+                @include('all-files.partials._auburn')
             </div>
         </div>
     </div>
@@ -49,7 +113,7 @@
 @section('scripts')
     @yield('partial_scripts')
     <script>
-        let search = '';
+        let search = '', isMatch = 1;
         $(document).ready(function () {
             odbcData();
         });
@@ -67,6 +131,8 @@
         $('body').on('click', '.file-data', function () {
             const id = $(this).attr('id').split('-');
             search = '';
+            isMatch = 1;
+            $('#' + id + '-search').val('');
             if (id[1] == 'odbc') {
                 odbcData();
             }
@@ -84,6 +150,28 @@
             }
         });
 
+        $('body').on('click', '.fda-match-radio', function () {
+            const id = $(this).attr('name');
+            search = '';
+            $('#' + id + '-search').val('');
+            isMatch = $(this).val();
+            if (id == 'odbc') {
+                odbcData();
+            }
+            if (id == 'cardinal') {
+                cardinalData();
+            }
+            if (id == 'ezirx') {
+                ezirxData();
+            }
+            if (id == 'txrade') {
+                txradeData();
+            }
+            if (id == 'auburn') {
+                auburnData();
+            }
+        });
+
         $('body').on('keyup', '#cardinal-search', function (e) {
             search = $(this).val();
             cardinalData();
@@ -93,7 +181,8 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                is_match:isMatch
             };
             $.ajax({
                 url: "{{ url('cardinal/data') }}",
@@ -107,7 +196,10 @@
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.cin_ndc_upc1 + '</td>' +
-                                '   <td>' + name + '</td>' +
+                                '   <td>' + v.fda_name + '</td>' +
+                                '   <td>' + v.fda_strength + '</td>' +
+                                '   <td>' + v.fda_form + '</td>' +
+                                '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.trade_name_mfr2 + '</td>' +
                                 '   <td>$' + v.invoice_cost + '</td>' +
                                 '</tr>';
@@ -133,7 +225,8 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                is_match:isMatch
             };
             $.ajax({
                 url: "{{ url('ezirx/data') }}",
@@ -146,7 +239,10 @@
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
-                                '   <td>' + v.name + '</td>' +
+                                '   <td>' + v.fda_name + '</td>' +
+                                '   <td>' + v.fda_form + '</td>' +
+                                '   <td>' + v.fda_strength + '</td>' +
+                                '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.price + '</td>' +
                                 '</tr>';
@@ -172,7 +268,8 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                is_match:isMatch
             };
             $.ajax({
                 url: "{{ url('txrade/data') }}",
@@ -186,7 +283,10 @@
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
-                                '   <td>' + name + '</td>' +
+                                '   <td>' + v.fda_name + '</td>' +
+                                '   <td>' + v.fda_form + '</td>' +
+                                '   <td>' + v.fda_strength + '</td>' +
+                                '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.mfr + '</td>' +
                                 '   <td>$' + v.best_price_today + '</td>' +
                                 '</tr>';
@@ -212,7 +312,8 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                is_match:isMatch
             };
             $.ajax({
                 url: "{{ url('auburn/data') }}",
@@ -225,7 +326,10 @@
                             html += '<tr>' +
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
-                                '   <td>' + v.description + '</td>' +
+                                '   <td>' + v.fda_name + '</td>' +
+                                '   <td>' + v.fda_form + '</td>' +
+                                '   <td>' + v.fda_strength + '</td>' +
+                                '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.price + '</td>' +
                                 '</tr>';

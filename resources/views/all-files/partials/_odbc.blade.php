@@ -7,7 +7,10 @@
         <th>#</th>
         <th>Product no</th>
         <th>Ndc</th>
-        <th>Description</th>
+        <th>Name</th>
+        <th>Form</th>
+        <th>Strength</th>
+        <th>Count</th>
         <th>Vendor</th>
         <th>Price</th>
         </thead>
@@ -25,7 +28,8 @@
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                is_match:isMatch
             };
             $.ajax({
                 url: "{{ url('odbc/all/data') }}",
@@ -39,7 +43,10 @@
                                 '   <td>' + count + '</td>' +
                                 '   <td>' + v.product_no + '</td>' +
                                 '   <td>' + v.ndc + '</td>' +
-                                '   <td>' + v.desc_one + '</td>' +
+                                '   <td>' + v.name + '</td>' +
+                                '   <td>' + v.form + '</td>' +
+                                '   <td>' + v.strength + '</td>' +
+                                '   <td>' + v.count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.list_price + '</td>' +
                                 '</tr>';
