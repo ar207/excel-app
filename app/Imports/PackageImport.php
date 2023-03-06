@@ -25,7 +25,7 @@ class PackageImport implements ToCollection, WithChunkReading
                     $description = explode('in', $row[3]);
                 }
                 $arr[$count]['product_id'] = isset($row[0]) ? $row[0] : '';
-                $arr[$count]['ndc_code'] = isset($row[2]) ? $row[2] : '';
+                $arr[$count]['ndc_code'] = isset($row[2]) ? ndcCorrection($row[2]) : '';
                 $arr[$count]['description'] = isset($description[0]) ? $description[0] : '';
                 $arr[$count]['created_at'] = Carbon::now();
                 $arr[$count]['updated_at'] = Carbon::now();

@@ -23,54 +23,48 @@
             right: 100%;
             padding: 1em;
             position: absolute;
-            width: 300px;
+            width: 400px;
             z-index: 1;
         }
 
     </style>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-sm-6 col-12">
-                                <h6 class="h6">ODBC</h6>
-                            </div>
-                            <div class="col-sm-6 col-12">
-                                <button class="btn btn-sm btn-primary float-right" id="export-to-excel">Export to
-                                    excel
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <div class="form-group m-2">
-                            <input class="form-control" type="search" id="search" placeholder="Search....">
-                        </div>
-                        <table class="table table-striped">
-                            <thead>
-                            <th>#</th>
-                            <th>Product No</th>
-                            <th>NDC</th>
-                            <th>Name</th>
-                            <th>Strength</th>
-                            <th>Form</th>
-                            <th>Count</th>
-                            <th>GPW</th>
-                            <th>Cardinal</th>
-                            <th>Ezirx</th>
-                            <th>Trxade</th>
-                            <th>Auburn</th>
-                            </thead>
-                            <tbody id="page-data"></tbody>
-                        </table>
-                    </div>
+    <div class="card m-2">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-6 col-12">
+                    <h6 class="h6">ODBC</h6>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <button class="btn btn-sm btn-primary float-right" id="export-to-excel">Export to
+                        excel
+                    </button>
                 </div>
             </div>
         </div>
+        <div class="table-responsive">
+            <div class="form-group m-2">
+                <input class="form-control" type="search" id="search" placeholder="Search....">
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <th>#</th>
+                <th>Product No</th>
+                <th>NDC</th>
+                <th>Name</th>
+                <th>Strength</th>
+                <th>Form</th>
+                <th>Count</th>
+                <th>GPW</th>
+                <th>Cardinal</th>
+                <th>Ezirx</th>
+                <th>Trxade</th>
+                <th>Auburn</th>
+                </thead>
+                <tbody id="page-data"></tbody>
+            </table>
+            <div class="m-3 paq-pager"></div>
+        </div>
     </div>
-
     <div class="modal fade" id="dataModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,7 +96,7 @@
 @endsection
 @section('scripts')
     <script>
-        let search = '';
+        let search = '', page = 1;
         $(document).ready(function () {
             getData();
         });
@@ -126,11 +120,19 @@
             window.location.href = "{{ url('odbc/export') }}";
         });
 
+        $(document).on("click", '.paq-pager ul.pagination a', function (e) {
+            e.preventDefault();
+            page = $(this).attr('href').split('page=')[1];
+            getData();
+        });
+
         function getData() {
             showLoader();
             const formData = {
                 '_token': "{{ csrf_token() }}",
-                search: search
+                search: search,
+                page: page,
+                per_page: 25
             };
             $.ajax({
                 url: "{{ url('odbc/data') }}",
@@ -139,7 +141,7 @@
                 success: function (response) {
                     let html = '', count = 1;
                     if (!empty(response.data.odbc)) {
-                        $.each(response.data.odbc, function (i, v) {
+                        $.each(response.data.odbc.data, function (i, v) {
                             let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData = '',
                                 cardinalFull = '', exportFull = '', trendingFull = '', auburnFull = '';
                             if (v.gpw_price != '-') {
@@ -150,15 +152,15 @@
                                     $.each(v.cardinal_full, function (ii, vv) {
                                         cardinalFull += '<tr>' +
                                             '   <td>' + vv.cin_ndc_upc1 + '</td>' +
-                                            '   <td>' + vv.fda_name + '</td>' +
-                                            '   <td>' + vv.fda_strength + '</td>' +
-                                            '   <td>' + vv.fda_form + '</td>' +
-                                            '   <td>' + vv.fda_count + '</td>' +
+                                            '   <td>' + vv.trade_name_mfr + '</td>' +
+                                            '   <td>' + vv.strength + '</td>' +
+                                            '   <td>' + vv.from + '</td>' +
+                                            '   <td>' + vv.size + '</td>' +
                                             '   <td>$' + vv.invoice_cost + '</td>' +
                                             '</tr>';
                                     });
                                 }
-                                cardinalData = 'NDC:' + v.cardinal_data.cin_ndc_upc1 + ' Name:' + v.cardinal_data.fda_name + ' Strength:' + v.cardinal_data.fda_strength + ' Count:' + v.cardinal_data.fda_count;
+                                cardinalData = 'NDC:' + v.cardinal_data.cin_ndc_upc1 + ' Name:' + v.cardinal_data.trade_name_mfr + ' Strength:' + v.cardinal_data.strength + ' Form:' + v.cardinal_data.from + ' Count:' + v.cardinal_data.size;
                             }
                             if (v.export_price != '-') {
                                 if (!empty(v.export_full)) {
@@ -223,6 +225,9 @@
                         });
                     }
                     $('#page-data').html('').html(html);
+                    if (response.data.pager !== 'undefined') {
+                        $('.paq-pager').show().html(response.data.pager);
+                    }
                     hideLoader();
                 },
                 error: function (error) {

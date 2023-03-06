@@ -173,7 +173,10 @@ class ODBCController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $this->data['odbc'] = $this->getOdbcData($data['search']);
+        $arr = $this->getOdbcData($data['search']);
+
+        $this->data['odbc'] = paginateArrayData($arr, $data['per_page'], $data['page']);
+        $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($arr));
 
         return response()->json(['data' => $this->data]);
     }
@@ -203,7 +206,7 @@ class ODBCController extends Controller
      */
     private function getOdbcData($search = '', $isExport = 0)
     {
-        $activeData = ActiveProductListing::where('name', '!=', '');
+        $activeData = ActiveProductListing::where('desc_one', '!=', '');
         if (!empty($search)) {
             $searchData = $search;
             $activeData->where(function ($query) use ($searchData) {

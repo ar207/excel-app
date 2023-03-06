@@ -162,18 +162,55 @@ function ndcCorrection($val)
 {
     $ndc = '';
     if (!empty($val)) {
-        $ndcValue = str_replace('-', '', $val);
-        $ndcLength = strlen($ndcValue);
-        $remainingNdc = 11 - $ndcLength;
-        $zero = 0;
-        if (!empty($remainingNdc)) {
-            for ($i = 1; $i <= $remainingNdc; $i++) {
-                $ndcValue = $zero . $ndcValue;
+        $splitNdc = explode('-', $val);
+        $firstNdc = $secondNdc = $thirdNdc = 0;
+        if (!empty($splitNdc[1])) {
+            if (!empty($splitNdc[0])) {
+                $remainingNdc = 5 - strlen($splitNdc[0]);
+                $zero = 0;
+                if (!empty($remainingNdc)) {
+                    for ($i = 1; $i <= $remainingNdc; $i++) {
+                        $firstNdc = $zero . $splitNdc[0];
+                    }
+                } else {
+                    $firstNdc = $splitNdc[0];
+                }
             }
+            $remainingNdc = 4 - strlen($splitNdc[1]);
+            $zero = 0;
+            if (!empty($remainingNdc)) {
+                for ($i = 1; $i <= $remainingNdc; $i++) {
+                    $secondNdc = $zero . $splitNdc[1];
+                }
+            } else {
+                $secondNdc = $splitNdc[1];
+            }
+            if (!empty($splitNdc[2])) {
+                $remainingNdc = 2 - strlen($splitNdc[2]);
+                $zero = 0;
+                if (!empty($remainingNdc)) {
+                    for ($i = 1; $i <= $remainingNdc; $i++) {
+                        $thirdNdc = $zero . $splitNdc[2];
+                    }
+                } else {
+                    $thirdNdc = $splitNdc[2];
+                }
+            }
+        } else {
+            $ndcValue = str_replace('-', '', $val);
+            $ndcLength = strlen($ndcValue);
+            $remainingNdc = 11 - $ndcLength;
+            $zero = 0;
+            if (!empty($remainingNdc)) {
+                for ($i = 1; $i <= $remainingNdc; $i++) {
+                    $ndcValue = $zero . $ndcValue;
+                }
+            }
+            $firstNdc = substr($ndcValue, 0, 5);
+            $secondNdc = substr($ndcValue, 5, 4);
+            $thirdNdc = substr($ndcValue, 9, 2);
         }
-        $firstNdc = substr($ndcValue, 0, 5);
-        $secondNdc = substr($ndcValue, 5, 4);
-        $thirdNdc = substr($ndcValue, 9, 2);
+
         $ndc = $firstNdc . '-' . $secondNdc . '-' . $thirdNdc;
     }
 
