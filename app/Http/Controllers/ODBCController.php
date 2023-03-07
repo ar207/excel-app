@@ -22,7 +22,9 @@ class ODBCController extends Controller
      */
     public function index()
     {
-        return view('odbc.index');
+        $this->data['odbc'] = $this->getOdbcData();
+
+        return view('odbc.index', $this->data);
     }
 
     /**
@@ -227,10 +229,7 @@ class ODBCController extends Controller
         $data = $request->all();
         ini_set('max_execution_time', '0');
         ini_set('memory_limit', '-1');
-        $arr = $this->getOdbcData($data['search']);
-
-        $this->data['odbc'] = paginateArrayData($arr, $data['per_page'], $data['page']);
-        $this->data['pager'] = make_complete_pagination_block($this->data['odbc'], count($arr));
+        $this->data['odbc'] = $this->getOdbcData($data['search']);
 
         return response()->json(['data' => $this->data]);
     }

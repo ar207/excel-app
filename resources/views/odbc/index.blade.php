@@ -45,7 +45,7 @@
             <div class="form-group m-2">
                 <input class="form-control" type="search" id="search" placeholder="Search....">
             </div>
-            <table class="table table-striped">
+            <table class="table table-striped" id="dataTables-example">
                 <thead>
                 <th>#</th>
                 <th>Product No</th>
@@ -60,7 +60,114 @@
                 <th>Trxade</th>
                 <th>Auburn</th>
                 </thead>
-                <tbody id="page-data"></tbody>
+                <tbody>
+                @php
+                    $count = 1;
+                @endphp
+                @foreach($odbc as $key => $row)
+                    @php
+                        $gpwData = $cardinalData = $exportData = $trendingData = $auburnData = $cardinalFull = $exportFull = $trendingFull = $auburnFull = '';
+                        if ($row['gpw_price'] != '-') {
+                            $gpwData = 'NDC:'.$row['ndc'].' Name:' . $row['name'] . ' Strength:' . $row['strength'] . ' Form:' . $row['form'] . ' Count:' . $row['count'];
+                        }
+                        if ($row['cardinal_price'] != '-') {
+                            foreach ($row['cardinal_full'] as $key => $cardinal) {
+                                $cardinalFull .= '<tr>' .
+                                                    '<td>' . $cardinal['cin_ndc_upc1'] . '</td>' .
+                                                    '<td>' . $cardinal['trade_name_mfr'] . '</td>' .
+                                                    '<td>' . $cardinal['strength'] . '</td>' .
+                                                    '<td>' . $cardinal['from'] . '</td>' .
+                                                    '<td>' . $cardinal['size'] . '</td>' .
+                                                    '<td>$' . $cardinal['invoice_cost'] . '</td>' .
+                                                '</tr>';
+                            }
+                            $cardinalData = 'NDC:' . $row['cardinal_data']['cin_ndc_upc1'] . ' Name:' . $row['cardinal_data']['trade_name_mfr'] . ' Strength:' . $row['cardinal_data']['strength'] . ' Form:' . $row['cardinal_data']['from'] . ' Count:' . $row['cardinal_data']['size'];
+                        }
+                        if ($row['export_price'] != '-') {
+                            foreach ($row['export_full'] as $key => $export) {
+                                $exportFull .= '<tr>' .
+                                                    '<td>' . $export['ndc'] . '</td>' .
+                                                    '<td>' . $export['fda_name'] . '</td>' .
+                                                    '<td>' . $export['fda_strength'] . '</td>' .
+                                                    '<td>' . $export['fda_form'] . '</td>' .
+                                                    '<td>' . $export['fda_count'] . '</td>' .
+                                                    '<td>$' . $export['price'] . '</td>' .
+                                                '</tr>';
+                            }
+                            $exportData = 'NDC:' . $row['export_data']['ndc'] . ' Name:' . $row['export_data']['fda_name'] . ' Strength:' . $row['export_data']['fda_strength'] . ' Form:' . $row['export_data']['fda_form'] . ' Count:' . $row['export_data']['fda_count'];
+                        }
+                        if ($row['trending_price'] != '-') {
+                            foreach ($row['trending_full'] as $key => $export) {
+                                $trendingFull .= '<tr>' .
+                                                    '<td>' . $export['ndc'] . '</td>' .
+                                                    '<td>' . $export['fda_name'] . '</td>' .
+                                                    '<td>' . $export['fda_strength'] . '</td>' .
+                                                    '<td>' . $export['fda_form'] . '</td>' .
+                                                    '<td>' . $export['fda_count'] . '</td>' .
+                                                    '<td>$' . $export['best_price_today'] . '</td>' .
+                                                '</tr>';
+                            }
+                            $trendingData = 'NDC:' . $row['trending_data']['ndc'] . ' Name:' . $row['trending_data']['fda_name'] . ' Strength:' . $row['trending_data']['fda_strength'] . ' Form:' . $row['trending_data']['fda_form'] . ' Count:' . $row['trending_data']['fda_count'];
+                        }
+                        if ($row['auburn_price'] != '-') {
+                            foreach ($row['auburn_full'] as $key => $export) {
+                                $auburnFull .= '<tr>' .
+                                                    '<td>' . $export['ndc'] . '</td>' .
+                                                    '<td>' . $export['fda_name'] . '</td>' .
+                                                    '<td>' . $export['fda_strength'] . '</td>' .
+                                                    '<td>' . $export['fda_form'] . '</td>' .
+                                                    '<td>' . $export['fda_count'] . '</td>' .
+                                                    '<td>$' . $export['price'] . '</td>' .
+                                                '</tr>';
+                            }
+                            $auburnData = 'NDC:' . $row['auburn_data']['ndc'] . ' Name:' . $row['auburn_data']['fda_name'] . ' Strength:' . $row['auburn_data']['fda_strength'] . ' Form:' . $row['auburn_data']['fda_form'] . ' Count:' . $row['auburn_data']['fda_count'];
+                        }
+                    @endphp
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $row['product_no'] }}</td>
+                        <td>{{ $row['ndc'] }}</td>
+                        <td>{{ $row['name'] }}</td>
+                        <td>{{ $row['strength'] }}</td>
+                        <td>{{ $row['form'] }}</td>
+                        <td>{{ $row['count'] }}</td>
+                        <td>
+                            <span class="cursor-pointer decoration-none"
+                                  data-title="{{ $gpwData }}">
+                                {{ $row['gpw_price'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <span data-toggle="modal" data-header="Cardinal" data-html="{{ $cardinalFull }}"
+                                  class="cursor-pointer decoration-none total-prices-data"
+                                  data-title="{{ $cardinalData }}">
+                                {{ $row['cardinal_price'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <span data-toggle="modal" data-header="Ezirx" data-html="{{ $exportFull }}"
+                                  class="cursor-pointer decoration-none total-prices-data"
+                                  data-title="{{ $exportData }}">
+                                {{ $row['export_price'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <span data-toggle="modal" data-header="Txrade" data-html="{{ $trendingFull }}"
+                                  class="cursor-pointer decoration-none total-prices-data"
+                                  data-title="{{ $trendingData }}">
+                                {{ $row['trending_price'] }}
+                            </span>
+                        </td>
+                        <td>
+                            <span data-toggle="modal" data-header="Txrade" data-html="{{ $auburnFull }}"
+                                  class="cursor-pointer decoration-none total-prices-data"
+                                  data-title="{{ $auburnData }}">
+                                {{ $row['auburn_price'] }}
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
             </table>
             <div class="m-3 paq-pager"></div>
         </div>
@@ -95,10 +202,11 @@
     </div>
 @endsection
 @section('scripts')
+    <link rel="stylesheet" href="{{ asset('assets/css/datatable.min.css') }}">
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
-        let search = '', page = 1;
         $(document).ready(function () {
-            getData();
         });
 
         /**
@@ -111,131 +219,18 @@
             return !(!!val ? typeof val === 'object' ? Array.isArray(val) ? !!val.length : !!Object.keys(val).length : true : false);
         }
 
-        $('body').on('keyup', '#search', function (e) {
-            search = $(this).val();
-            getData();
-        });
-
         $('body').on('click', '#export-to-excel', function () {
             window.location.href = "{{ url('odbc/export') }}";
         });
 
-        $(document).on("click", '.paq-pager ul.pagination a', function (e) {
-            e.preventDefault();
-            page = $(this).attr('href').split('page=')[1];
-            getData();
+        oTable = $('#dataTables-example').DataTable({
+            "bPaginate": false,
+            "ordering": false
+        });//pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+        $('#dataTables-example_filter, #dataTables-example_length').hide();
+        $('#search').keyup(function () {
+            oTable.search($(this).val()).draw();
         });
-
-        function getData() {
-            showLoader();
-            const formData = {
-                '_token': "{{ csrf_token() }}",
-                search: search,
-                page: page,
-                per_page: 25
-            };
-            $.ajax({
-                url: "{{ url('odbc/data') }}",
-                type: 'get',
-                data: formData,
-                success: function (response) {
-                    let html = '', count = 1;
-                    if (!empty(response.data.odbc)) {
-                        $.each(response.data.odbc.data, function (i, v) {
-                            let cardinalData = '', exportData = '', trendingData = '', auburnData = '', gpwData = '',
-                                cardinalFull = '', exportFull = '', trendingFull = '', auburnFull = '';
-                            if (v.gpw_price != '-') {
-                                gpwData = 'NDC:' + v.ndc + ' Name:' + v.name + ' Strength:' + v.strength + ' Form:' + v.form + ' Count:' + v.count;
-                            }
-                            if (v.cardinal_price != '-') {
-                                if (!empty(v.cardinal_full)) {
-                                    $.each(v.cardinal_full, function (ii, vv) {
-                                        cardinalFull += '<tr>' +
-                                            '   <td>' + vv.cin_ndc_upc1 + '</td>' +
-                                            '   <td>' + vv.trade_name_mfr + '</td>' +
-                                            '   <td>' + vv.strength + '</td>' +
-                                            '   <td>' + vv.from + '</td>' +
-                                            '   <td>' + vv.size + '</td>' +
-                                            '   <td>$' + vv.invoice_cost + '</td>' +
-                                            '</tr>';
-                                    });
-                                }
-                                cardinalData = 'NDC:' + v.cardinal_data.cin_ndc_upc1 + ' Name:' + v.cardinal_data.trade_name_mfr + ' Strength:' + v.cardinal_data.strength + ' Form:' + v.cardinal_data.from + ' Count:' + v.cardinal_data.size;
-                            }
-                            if (v.export_price != '-') {
-                                if (!empty(v.export_full)) {
-                                    $.each(v.export_full, function (ii, vv) {
-                                        exportFull += '<tr>' +
-                                            '   <td>' + vv.ndc + '</td>' +
-                                            '   <td>' + vv.fda_name + '</td>' +
-                                            '   <td>' + vv.fda_strength + '</td>' +
-                                            '   <td>' + vv.fda_form + '</td>' +
-                                            '   <td>' + vv.fda_count + '</td>' +
-                                            '   <td>$' + vv.price + '</td>' +
-                                            '</tr>';
-                                    });
-                                }
-                                exportData = 'NDC:' + v.export_data.ndc + ' Name:' + v.export_data.fda_name + ' Strength:' + v.export_data.fda_strength + ' Count:' + v.export_data.fda_count;
-                            }
-                            if (v.trending_price != '-') {
-                                if (!empty(v.trending_full)) {
-                                    $.each(v.trending_full, function (ii, vv) {
-                                        trendingFull += '<tr>' +
-                                            '   <td>' + vv.ndc + '</td>' +
-                                            '   <td>' + vv.fda_name + '</td>' +
-                                            '   <td>' + vv.fda_strength + '</td>' +
-                                            '   <td>' + vv.fda_form + '</td>' +
-                                            '   <td>' + vv.fda_count + '</td>' +
-                                            '   <td>$' + vv.best_price_today + '</td>' +
-                                            '</tr>';
-                                    });
-                                }
-                                trendingData = 'NDC:' + v.trending_data.ndc + ' Name:' + v.trending_data.fda_name + ' Strength:' + v.trending_data.fda_strength + ' Count:' + v.trending_data.fda_count;
-                            }
-                            if (v.auburn_price != '-') {
-                                if (!empty(v.auburn_full)) {
-                                    $.each(v.auburn_full, function (ii, vv) {
-                                        auburnFull += '<tr>' +
-                                            '   <td>' + vv.ndc + '</td>' +
-                                            '   <td>' + vv.fda_name + '</td>' +
-                                            '   <td>' + vv.fda_strength + '</td>' +
-                                            '   <td>' + vv.fda_form + '</td>' +
-                                            '   <td>' + vv.fda_count + '</td>' +
-                                            '   <td>$' + vv.price + '</td>' +
-                                            '</tr>';
-                                    });
-                                }
-                                auburnData = 'NDC:' + v.auburn_data.ndc + ' Name:' + v.auburn_data.fda_name + ' Strength:' + v.auburn_data.fda_strength + ' Count:' + v.auburn_data.fda_count;
-                            }
-                            html += '<tr>' +
-                                '   <td>' + count + '</td>' +
-                                '   <td>' + v.product_no + '</td>' +
-                                '   <td>' + v.ndc + '</td>' +
-                                '   <td>' + v.name + '</td>' +
-                                '   <td>' + v.strength + '</td>' +
-                                '   <td>' + v.form + '</td>' +
-                                '   <td>' + v.count + '</td>' +
-                                '   <td><span class="cursor-pointer decoration-none" data-title="' + gpwData + '">' + v.gpw_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-header="Cardinal" data-html="' + cardinalFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + cardinalData + '">' + v.cardinal_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-header="Ezirx" data-html="' + exportFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + exportData + '">' + v.export_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-header="Trxade" data-html="' + trendingFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + trendingData + '">' + v.trending_price + '</span></td>' +
-                                '   <td><span data-toggle="modal" data-header="Auburn" data-html="' + auburnFull + '" class="cursor-pointer decoration-none total-prices-data" data-title="' + auburnData + '">' + v.auburn_price + '</span></td>' +
-                                '</tr>';
-                            count++;
-                        });
-                    }
-                    $('#page-data').html('').html(html);
-                    if (response.data.pager !== 'undefined') {
-                        $('.paq-pager').show().html(response.data.pager);
-                    }
-                    hideLoader();
-                },
-                error: function (error) {
-                    hideLoader();
-                    swal('Error', error.statusText, 'error');
-                }
-            })
-        }
 
         $('body').on('click', '.total-prices-data', function () {
             const data = $(this).attr('data-html');

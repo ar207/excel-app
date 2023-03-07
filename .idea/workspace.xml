@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85437ca4-9e97-4d81-ba96-11cdabd85ef2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Pc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Pc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/datatable.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/dataTables.bootstrap4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery.dataTables.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/odbc/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/odbc/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,8 +67,8 @@
     <session id="923331630">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="68" />
-          <entry key="project.open.time.0" value="53" />
+          <entry key="project.closed" value="69" />
+          <entry key="project.open.time.0" value="54" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.2" value="2" />
@@ -83,45 +79,45 @@
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="86" />
+          <entry key="project.opened" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="23090" />
+          <entry key="php" value="24121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="7279" />
+          <entry key="Blade" value="8225" />
           <entry key="HTML" value="5" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="15806" />
+          <entry key="PHP" value="15891" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="5" />
+          <entry key="css" value="6" />
           <entry key="env" value="1" />
           <entry key="gif" value="1" />
           <entry key="html" value="2" />
-          <entry key="js" value="4" />
+          <entry key="js" value="6" />
           <entry key="json" value="13" />
-          <entry key="php" value="174" />
+          <entry key="php" value="175" />
           <entry key="ts" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="35" />
-          <entry key="CSS" value="5" />
+          <entry key="Blade" value="36" />
+          <entry key="CSS" value="6" />
           <entry key="HTML" value="2" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="13" />
-          <entry key="JavaScript" value="4" />
+          <entry key="JavaScript" value="6" />
           <entry key="PHP" value="139" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="TypeScript" value="2" />
@@ -131,11 +127,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-62">
-              <caret line="197" column="40" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+            <state relative-caret-position="478">
+              <caret line="312" column="41" selection-start-line="312" selection-start-column="41" selection-end-line="312" selection-end-column="41" />
               <folding>
                 <element signature="e#40#67#0#PHP" expanded="true" />
               </folding>
@@ -148,9 +144,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
               <caret line="315" column="32" selection-start-line="315" selection-start-column="32" selection-end-line="315" selection-end-column="32" />
-              <folding>
-                <element signature="e#213#2098#0#HTML" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-569">
+              <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -159,7 +161,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -168,7 +170,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -185,8 +187,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="203" column="37" lean-forward="true" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
+            <state relative-caret-position="3417">
+              <caret line="203" column="37" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -194,7 +196,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="1020">
               <caret line="69" column="67" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
             </state>
           </provider>
@@ -205,19 +207,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>backg</find>
-      <find>backgroundColorType</find>
-      <find>repeatCell</find>
-      <find>circle_percent</find>
-      <find>prepareDataForGoogleSheet</find>
-      <find>$headers,</find>
-      <find>$headers[] = ['pro</find>
       <find>$arrActiveProducts</find>
       <find>exportAll</find>
       <find>exportAll(</find>
@@ -241,6 +237,13 @@
       <find>search</find>
       <find>CardinalHealth</find>
       <find>name</find>
+      <find>gpwData</find>
+      <find>cardinalData</find>
+      <find>ardinalFul</find>
+      <find>Export</find>
+      <find>exportFull</find>
+      <find>Ezirx</find>
+      <find>auburn_price</find>
     </findStrings>
     <replaceStrings>
       <replace>required</replace>
@@ -253,9 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/TrendingProduct.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2023_01_21_104629_create_trending_products_table.php" />
-        <option value="$PROJECT_DIR$/app/Models/AuburnPharmaceutical.php" />
         <option value="$PROJECT_DIR$/database/seeders/FileCategorySeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_01_21_151000_create_export_all_products_table.php" />
@@ -295,7 +295,6 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/Imports/PackageImport.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php" />
-        <option value="$PROJECT_DIR$/resources/views/odbc/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php" />
@@ -303,7 +302,11 @@
         <option value="$PROJECT_DIR$/resources/views/all-files/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php" />
         <option value="$PROJECT_DIR$/app/Helpers/helpers.php" />
+        <option value="$PROJECT_DIR$/public/assets/css/datatable-css.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/jquery.dataTables.min.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/dataTables.bootstrap4.min.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" />
+        <option value="$PROJECT_DIR$/resources/views/odbc/index.blade.php" />
       </list>
     </option>
   </component>
@@ -472,6 +475,31 @@
             <path>
               <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="excel-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="excel-app" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -519,6 +547,7 @@
     <property name="SearchEverywhereHistoryKey" value="FDA&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;app.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/app.php&#10;composer&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/composer.json&#10;upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;_cardinal&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;UploadF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;CardinalHealths&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;ActiveProductListing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;FdaFIle&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;home&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/home.blade.php&#10;web.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;ProductPackageCombinations&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;FdaC&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/.env&#10;ExportAllProduct&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;CardinalHealth&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;_products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;ProductPackageCombination&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_add_in&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;2023_02_23_123002_create_product_package_combinations_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_17_151125_create_packages_table.php&#10;_p&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;2023_02_23_080643_add_indexing_package_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;_inde&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080540_add_indexing_to_packages_table--table=packages.php&#10;2023_02_23_080429_add_indexing_package_table--table=packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080429_add_indexing_package_table--table=packages.php&#10;_product&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;FdaF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;_listing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;database&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;helpers&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Helpers/helpers.php&#10;web&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;database.&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;Upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;Fda&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;fdas&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;ActiveProductListings&#9;null&#9;null&#10;rodu&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Ca&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;CardinalI&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;_products_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;boot&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FDAs&#9;null&#9;null&#10;2023_02_16_160132_create_f_d_a_s_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;Car&#9;null&#9;null&#10;RegisterC&#9;null&#9;null&#10;register&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/auth/register.blade.php&#10;bootstrap4&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FileCat&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/seeders/FileCategorySeeder.php&#10;_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../PointOfSale" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -646,12 +675,13 @@
       <workItem from="1677854914798" duration="3739000" />
       <workItem from="1677911484083" duration="7733000" />
       <workItem from="1678092316542" duration="781000" />
-      <workItem from="1678107282338" duration="10778000" />
+      <workItem from="1678107282338" duration="11373000" />
+      <workItem from="1678168265513" duration="5291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221767000" />
+    <option name="totallyTimeSpent" value="227653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -697,21 +727,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/FDA.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Imports/CardinalImport.php" />
     <entry file="file://$PROJECT_DIR$/app/Models/Package.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -894,20 +909,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3638">
           <caret line="266" column="37" selection-start-line="266" selection-start-column="37" selection-end-line="266" selection-end-column="37" />
-          <folding>
-            <element signature="e#2255#4417#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,13 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="69" column="67" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_cardinal.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -946,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -960,24 +951,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="203" column="37" lean-forward="true" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
+        <state relative-caret-position="442">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_auburn.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_odbc.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="1547">
+          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3417">
+          <caret line="203" column="37" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FdaFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="69" column="67" selection-start-line="69" selection-start-column="67" selection-end-line="69" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -985,19 +990,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="315" column="32" selection-start-line="315" selection-start-column="32" selection-end-line="315" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/datatable.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="404" column="1" lean-forward="true" selection-start-line="404" selection-start-column="1" selection-end-line="404" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="2519" column="18" selection-start-line="2519" selection-start-column="18" selection-end-line="2519" selection-end-column="18" />
           <folding>
-            <element signature="e#213#2098#0#HTML" />
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/dataTables.bootstrap4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="69" column="3" lean-forward="true" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="197" column="40" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+        <state relative-caret-position="478">
+          <caret line="312" column="41" selection-start-line="312" selection-start-column="41" selection-end-line="312" selection-end-column="41" />
           <folding>
             <element signature="e#40#67#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/odbc/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-569">
+          <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
         </state>
       </provider>
     </entry>
