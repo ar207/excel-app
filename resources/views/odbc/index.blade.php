@@ -68,7 +68,7 @@
                     @php
                         $gpwData = $cardinalData = $exportData = $trendingData = $auburnData = $cardinalFull = $exportFull = $trendingFull = $auburnFull = '';
                         if ($row['gpw_price'] != '-') {
-                            $gpwData = 'NDC:'.$row['ndc'].' Name:' . $row['name'] . ' Strength:' . $row['strength'] . ' Form:' . $row['form'] . ' Count:' . $row['count'];
+                            $gpwData = 'NDC:'.$row['ndc'].' Name:' . $row['name'] . ' Strength:' . $row['strength'] . ' Form:' . $row['form'] . ' Count:' . $row['count'] . ' Date update:' . \Carbon\Carbon::parse($row['created_at'])->format('d-M-Y');
                         }
                         if ($row['cardinal_price'] != '-') {
                             foreach ($row['cardinal_full'] as $key => $cardinal) {
@@ -81,7 +81,7 @@
                                                     '<td>$' . $cardinal['invoice_cost'] . '</td>' .
                                                 '</tr>';
                             }
-                            $cardinalData = 'NDC:' . $row['cardinal_data']['cin_ndc_upc1'] . ' Name:' . $row['cardinal_data']['trade_name_mfr'] . ' Strength:' . $row['cardinal_data']['strength'] . ' Form:' . $row['cardinal_data']['from'] . ' Count:' . $row['cardinal_data']['size'];
+                            $cardinalData = 'NDC:' . $row['cardinal_data']['cin_ndc_upc1'] . ' Name:' . $row['cardinal_data']['trade_name_mfr'] . ' Strength:' . $row['cardinal_data']['strength'] . ' Form:' . $row['cardinal_data']['from'] . ' Count:' . $row['cardinal_data']['size'] . ' Date update:' . \Carbon\Carbon::parse($row['cardinal_data']['created_at'])->format('d-M-Y');
                         }
                         if ($row['export_price'] != '-') {
                             foreach ($row['export_full'] as $key => $export) {
@@ -94,7 +94,7 @@
                                                     '<td>$' . $export['price'] . '</td>' .
                                                 '</tr>';
                             }
-                            $exportData = 'NDC:' . $row['export_data']['ndc'] . ' Name:' . $row['export_data']['fda_name'] . ' Strength:' . $row['export_data']['fda_strength'] . ' Form:' . $row['export_data']['fda_form'] . ' Count:' . $row['export_data']['fda_count'];
+                            $exportData = 'NDC:' . $row['export_data']['ndc'] . ' Name:' . $row['export_data']['fda_name'] . ' Strength:' . $row['export_data']['fda_strength'] . ' Form:' . $row['export_data']['fda_form'] . ' Count:' . $row['export_data']['fda_count'] . ' Date update:' . \Carbon\Carbon::parse($row['export_data']['created_at'])->format('d-M-Y');
                         }
                         if ($row['trending_price'] != '-') {
                             foreach ($row['trending_full'] as $key => $export) {
@@ -107,7 +107,7 @@
                                                     '<td>$' . $export['best_price_today'] . '</td>' .
                                                 '</tr>';
                             }
-                            $trendingData = 'NDC:' . $row['trending_data']['ndc'] . ' Name:' . $row['trending_data']['fda_name'] . ' Strength:' . $row['trending_data']['fda_strength'] . ' Form:' . $row['trending_data']['fda_form'] . ' Count:' . $row['trending_data']['fda_count'];
+                            $trendingData = 'NDC:' . $row['trending_data']['ndc'] . ' Name:' . $row['trending_data']['fda_name'] . ' Strength:' . $row['trending_data']['fda_strength'] . ' Form:' . $row['trending_data']['fda_form'] . ' Count:' . $row['trending_data']['fda_count'] . ' Date update:' . \Carbon\Carbon::parse($row['trending_data']['created_at'])->format('d-M-Y');
                         }
                         if ($row['auburn_price'] != '-') {
                             foreach ($row['auburn_full'] as $key => $export) {
@@ -120,7 +120,7 @@
                                                     '<td>$' . $export['price'] . '</td>' .
                                                 '</tr>';
                             }
-                            $auburnData = 'NDC:' . $row['auburn_data']['ndc'] . ' Name:' . $row['auburn_data']['fda_name'] . ' Strength:' . $row['auburn_data']['fda_strength'] . ' Form:' . $row['auburn_data']['fda_form'] . ' Count:' . $row['auburn_data']['fda_count'];
+                            $auburnData = 'NDC:' . $row['auburn_data']['ndc'] . ' Name:' . $row['auburn_data']['fda_name'] . ' Strength:' . $row['auburn_data']['fda_strength'] . ' Form:' . $row['auburn_data']['fda_form'] . ' Count:' . $row['auburn_data']['fda_count'] . ' Date update:' . \Carbon\Carbon::parse($row['auburn_data']['created_at'])->format('d-M-Y');
                         }
                     @endphp
                     <tr>

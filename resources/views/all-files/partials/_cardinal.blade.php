@@ -12,6 +12,7 @@
         <th>Count</th>
         <th>Vendor</th>
         <th>Price</th>
+        <th>Date Updated</th>
         </thead>
         <tbody id="cardinal-data"></tbody>
     </table>

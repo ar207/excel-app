@@ -202,6 +202,7 @@
                                 '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.trade_name_mfr2 + '</td>' +
                                 '   <td>$' + v.invoice_cost + '</td>' +
+                                '   <td>' + v.date_created + '</td>' +
                                 '</tr>';
                             count++;
                         });
@@ -245,6 +246,7 @@
                                 '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.price + '</td>' +
+                                '   <td>' + v.date_created + '</td>' +
                                 '</tr>';
                             count++;
                         });
@@ -289,6 +291,7 @@
                                 '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.mfr + '</td>' +
                                 '   <td>$' + v.best_price_today + '</td>' +
+                                '   <td>' + v.date_created + '</td>' +
                                 '</tr>';
                             count++;
                         });
@@ -332,6 +335,7 @@
                                 '   <td>' + v.fda_count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.price + '</td>' +
+                                '   <td>' + v.date_created + '</td>' +
                                 '</tr>';
                             count++;
                         });

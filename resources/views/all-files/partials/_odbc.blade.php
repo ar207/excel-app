@@ -13,6 +13,7 @@
         <th>Count</th>
         <th>Vendor</th>
         <th>Price</th>
+        <th>Date Updated</th>
         </thead>
         <tbody id="odbc-data"></tbody>
     </table>
@@ -49,6 +50,7 @@
                                 '   <td>' + v.count + '</td>' +
                                 '   <td>' + v.vendor + '</td>' +
                                 '   <td>$' + v.list_price + '</td>' +
+                                '   <td>' + v.date_created + '</td>' +
                                 '</tr>';
                             count++;
                         });

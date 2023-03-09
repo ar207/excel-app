@@ -9,6 +9,7 @@ use App\Models\CardinalHealth;
 use App\Models\ExportAllProduct;
 use App\Models\TrendingProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ODBCController extends Controller
@@ -48,7 +49,7 @@ class ODBCController extends Controller
         $data = $request->all();
         if (!empty($data['search'])) {
             $searchData = $data['search'];
-            $active = ActiveProductListing::where(function ($query) use ($searchData) {
+            $active = ActiveProductListing::select('active_product_listings.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where(function ($query) use ($searchData) {
                 $query->where('product_no', 'rlike', $searchData)
                     ->orWhere('ndc', 'rlike', $searchData)
                     ->orWhere('name', 'rlike', $searchData)
@@ -65,9 +66,9 @@ class ODBCController extends Controller
             }
         } else {
             if (!empty($data['is_match'])) {
-                $this->data = ActiveProductListing::where('count', '!=', '')->get();
+                $this->data = ActiveProductListing::select('active_product_listings.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('count', '!=', '')->get();
             } else {
-                $this->data = ActiveProductListing::where('count', '=', '')->get();
+                $this->data = ActiveProductListing::select('active_product_listings.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('count', '=', '')->get();
             }
         }
 
@@ -85,7 +86,7 @@ class ODBCController extends Controller
         $data = $request->all();
         if (!empty($data['search'])) {
             $searchData = $data['search'];
-            $cardinal = CardinalHealth::where(function ($query) use ($searchData) {
+            $cardinal = CardinalHealth::select('cardinal_healths.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where(function ($query) use ($searchData) {
                 $query->where('cin_ndc_upc1', 'rlike', $searchData)
                     ->orWhere('fda_name', 'rlike', $searchData)
                     ->orWhere('fda_form', 'rlike', $searchData)
@@ -101,9 +102,9 @@ class ODBCController extends Controller
             }
         } else {
             if (!empty($data['is_match'])) {
-                $this->data = CardinalHealth::where('fda_count', '!=', '')->get();
+                $this->data = CardinalHealth::select('cardinal_healths.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_count', '!=', '')->get();
             } else {
-                $this->data = CardinalHealth::where('fda_name', '=', '')->where('fda_count', '=', '')->get();
+                $this->data = CardinalHealth::select('cardinal_healths.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '=', '')->where('fda_count', '=', '')->get();
             }
         }
 
@@ -121,7 +122,7 @@ class ODBCController extends Controller
         $data = $request->all();
         if (!empty($data['search'])) {
             $searchData = $data['search'];
-            $export = ExportAllProduct::where(function ($query) use ($searchData) {
+            $export = ExportAllProduct::select('export_all_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where(function ($query) use ($searchData) {
                 $query->where('fda_name', 'rlike', $searchData)
                     ->orWhere('fda_form', 'rlike', $searchData)
                     ->orWhere('fda_strength', 'rlike', $searchData)
@@ -137,9 +138,9 @@ class ODBCController extends Controller
             }
         } else {
             if (!empty($data['is_match'])) {
-                $this->data = ExportAllProduct::where('fda_count', '!=', '')->get();
+                $this->data = ExportAllProduct::select('export_all_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_count', '!=', '')->get();
             } else {
-                $this->data = ExportAllProduct::where('fda_name', '=', '')->where('fda_count', '=', '')->get();
+                $this->data = ExportAllProduct::select('export_all_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '=', '')->where('fda_count', '=', '')->get();
             }
         }
 
@@ -157,7 +158,7 @@ class ODBCController extends Controller
         $data = $request->all();
         if (!empty($data['search'])) {
             $searchData = $data['search'];
-            $trending = TrendingProduct::where(function ($query) use ($searchData) {
+            $trending = TrendingProduct::select('trending_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where(function ($query) use ($searchData) {
                 $query->where('fda_name', 'rlike', $searchData)
                     ->orWhere('ndc', 'rlike', $searchData)
                     ->orWhere('fda_strength', 'rlike', $searchData)
@@ -173,9 +174,9 @@ class ODBCController extends Controller
             }
         } else {
             if (!empty($data['is_match'])) {
-                $this->data = TrendingProduct::where('fda_name', '!=', '')->get();
+                $this->data = TrendingProduct::select('trending_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '!=', '')->get();
             } else {
-                $this->data = TrendingProduct::where('fda_name', '=', '')->where('fda_count', '=', '')->get();
+                $this->data = TrendingProduct::select('trending_products.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '=', '')->where('fda_count', '=', '')->get();
             }
         }
 
@@ -193,7 +194,7 @@ class ODBCController extends Controller
         $data = $request->all();
         if (!empty($data['search'])) {
             $searchData = $data['search'];
-            $auburn = AuburnPharmaceutical::where(function ($query) use ($searchData) {
+            $auburn = AuburnPharmaceutical::select('auburn_pharmaceuticals.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where(function ($query) use ($searchData) {
                 $query->where('fda_name', 'rlike', $searchData)
                     ->orWhere('fda_strength', 'rlike', $searchData)
                     ->orWhere('fda_form', 'rlike', $searchData)
@@ -209,9 +210,9 @@ class ODBCController extends Controller
             }
         } else {
             if (!empty($data['is_match'])) {
-                $this->data = AuburnPharmaceutical::where('fda_name', '!=', '')->get();
+                $this->data = AuburnPharmaceutical::select('auburn_pharmaceuticals.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '!=', '')->get();
             } else {
-                $this->data = AuburnPharmaceutical::where('fda_name', '=', '')->where('fda_count', '=', '')->get();
+                $this->data = AuburnPharmaceutical::select('auburn_pharmaceuticals.*', DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as date_created"))->where('fda_name', '=', '')->where('fda_count', '=', '')->get();
             }
         }
 
@@ -310,6 +311,7 @@ class ODBCController extends Controller
                     $arr[$key]['trending_price'] = !empty($minTrending) ? '$' . str_replace('$', '', $minTrending) : '-';
                     $arr[$key]['auburn_price'] = !empty($minAuburn) ? '$' . str_replace('$', '', $minAuburn) : '-';
                     if (empty($isExport)) {
+                        $arr[$key]['created_at'] = $row->created_at;
                         $arr[$key]['cardinal_data'] = !empty($cardinal) ? $cardinal->toArray() : [];
                         $arr[$key]['cardinal_full'] = !empty($cardinalArray) ? $cardinalArray : [];
                         $arr[$key]['export_data'] = !empty($export) ? $export->toArray() : [];
