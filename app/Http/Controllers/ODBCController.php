@@ -299,28 +299,28 @@ class ODBCController extends Controller
                         $auburn = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->first();
                         $auburnArray = AuburnPharmaceutical::where('fda_name', $row->name)->where('fda_strength', $row->strength)->where('fda_form', $row->form)->where('fda_count', $row->count)->get()->toArray();
                     }
-                    $arr[$key]['product_no'] = $row->product_no;
-                    $arr[$key]['ndc'] = $row->fda_ndc;
-                    $arr[$key]['name'] = $row->name;
-                    $arr[$key]['strength'] = $row->strength;
-                    $arr[$key]['form'] = $row->form;
-                    $arr[$key]['count'] = $row->count;
-                    $arr[$key]['gpw_price'] = !empty($row->list_price) ? '$' . str_replace('$', '', $row->list_price) : '-';
-                    $arr[$key]['cardinal_price'] = !empty($minCardinal) ? '$' . str_replace('$', '', $minCardinal) : '-';
-                    $arr[$key]['export_price'] = !empty($minExport) ? '$' . str_replace('$', '', $minExport) : '-';
-                    $arr[$key]['trending_price'] = !empty($minTrending) ? '$' . str_replace('$', '', $minTrending) : '-';
-                    $arr[$key]['auburn_price'] = !empty($minAuburn) ? '$' . str_replace('$', '', $minAuburn) : '-';
-                    if (empty($isExport)) {
-                        $arr[$key]['created_at'] = $row->created_at;
-                        $arr[$key]['cardinal_data'] = !empty($cardinal) ? $cardinal->toArray() : [];
-                        $arr[$key]['cardinal_full'] = !empty($cardinalArray) ? $cardinalArray : [];
-                        $arr[$key]['export_data'] = !empty($export) ? $export->toArray() : [];
-                        $arr[$key]['export_full'] = !empty($exportArray) ? $exportArray : [];
-                        $arr[$key]['trending_data'] = !empty($trending) ? $trending->toArray() : [];
-                        $arr[$key]['trending_full'] = !empty($trendingArray) ? $trendingArray : [];
-                        $arr[$key]['auburn_data'] = !empty($auburn) ? $auburn->toArray() : [];
-                        $arr[$key]['auburn_full'] = !empty($auburnArray) ? $auburnArray : [];
-                    }
+                }
+                $arr[$key]['product_no'] = $row->product_no;
+                $arr[$key]['ndc'] = $row->fda_ndc;
+                $arr[$key]['name'] = $row->name;
+                $arr[$key]['strength'] = $row->strength;
+                $arr[$key]['form'] = $row->form;
+                $arr[$key]['count'] = $row->count;
+                $arr[$key]['gpw_price'] = !empty($row->list_price) ? '$' . str_replace('$', '', $row->list_price) : '-';
+                $arr[$key]['cardinal_price'] = !empty($minCardinal) ? '$' . str_replace('$', '', $minCardinal) : '-';
+                $arr[$key]['export_price'] = !empty($minExport) ? '$' . str_replace('$', '', $minExport) : '-';
+                $arr[$key]['trending_price'] = !empty($minTrending) ? '$' . str_replace('$', '', $minTrending) : '-';
+                $arr[$key]['auburn_price'] = !empty($minAuburn) ? '$' . str_replace('$', '', $minAuburn) : '-';
+                if (empty($isExport)) {
+                    $arr[$key]['created_at'] = $row->created_at;
+                    $arr[$key]['cardinal_data'] = !empty($cardinal) ? $cardinal->toArray() : [];
+                    $arr[$key]['cardinal_full'] = !empty($cardinalArray) ? $cardinalArray : [];
+                    $arr[$key]['export_data'] = !empty($export) ? $export->toArray() : [];
+                    $arr[$key]['export_full'] = !empty($exportArray) ? $exportArray : [];
+                    $arr[$key]['trending_data'] = !empty($trending) ? $trending->toArray() : [];
+                    $arr[$key]['trending_full'] = !empty($trendingArray) ? $trendingArray : [];
+                    $arr[$key]['auburn_data'] = !empty($auburn) ? $auburn->toArray() : [];
+                    $arr[$key]['auburn_full'] = !empty($auburnArray) ? $auburnArray : [];
                 }
             }
         }
