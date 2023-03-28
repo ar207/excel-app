@@ -77,7 +77,7 @@ class UploadFileController extends Controller
         $count = 0;
         foreach ($rows[0] as $key => $row) {
             if (!empty($row[6])) {
-                $correctNdc = ndcCorrection($row[6]);
+                $correctNdc = ndcCorrection($row[5]);
                 $ndc = str_replace('-', '', $correctNdc);
                 $fda = ProductPackageCombination::where('ndc_match', $ndc)->first();
                 $fdaData = [];

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85437ca4-9e97-4d81-ba96-11cdabd85ef2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,20 +18,24 @@
     <session id="-1618850678">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
+          <entry key="env" value="1" />
+          <entry key="example" value="1" />
           <entry key="html" value="2" />
           <entry key="js" value="1" />
-          <entry key="json" value="1" />
-          <entry key="php" value="21" />
+          <entry key="json" value="3" />
+          <entry key="php" value="22" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
@@ -40,23 +44,26 @@
           <entry key="Blade" value="3" />
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2" />
-          <entry key="JSON" value="1" />
+          <entry key="JSON" value="3" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="18" />
+          <entry key="PHP" value="19" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="env" value="9" />
           <entry key="json" value="15" />
-          <entry key="php" value="954" />
+          <entry key="php" value="955" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Blade" value="76" />
           <entry key="JSON" value="15" />
-          <entry key="PHP" value="878" />
+          <entry key="PHP" value="879" />
+          <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -123,11 +130,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="317" column="90" lean-forward="true" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
+            <state relative-caret-position="5253">
+              <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
               <folding>
                 <element signature="e#40#67#0#PHP" expanded="true" />
               </folding>
@@ -136,9 +143,54 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/credentials.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/credentials2.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env.example">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="19" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="35">
+              <caret line="79" column="50" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/all-files/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="5729">
               <caret line="337" column="70" selection-start-line="337" selection-start-column="70" selection-end-line="337" selection-end-column="70" />
             </state>
           </provider>
@@ -198,7 +250,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeders/FileCategorySeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_01_21_151000_create_export_all_products_table.php" />
         <option value="$PROJECT_DIR$/app/Models/ExportAllProduct.php" />
@@ -227,7 +278,6 @@
         <option value="$PROJECT_DIR$/app/Models/ProductPackageCombination.php" />
         <option value="$PROJECT_DIR$/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php" />
         <option value="$PROJECT_DIR$/resources/js/popper.min.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
         <option value="$PROJECT_DIR$/public/credentials.json" />
         <option value="$PROJECT_DIR$/resources/views/fda/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
@@ -249,6 +299,8 @@
         <option value="$PROJECT_DIR$/resources/views/all-files/partials/_ezrix.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/all-files/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ODBCController.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php" />
       </list>
     </option>
   </component>
@@ -406,7 +458,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -483,10 +534,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="UploadF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;FDA&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;app.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/app.php&#10;composer&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/composer.json&#10;upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;_cardinal&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;CardinalHealths&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;ActiveProductListing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;FdaFIle&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;home&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/home.blade.php&#10;web.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;ProductPackageCombinations&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;FdaC&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/.env&#10;ExportAllProduct&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;CardinalHealth&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;_products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;ProductPackageCombination&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_add_in&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;2023_02_23_123002_create_product_package_combinations_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_17_151125_create_packages_table.php&#10;_p&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;2023_02_23_080643_add_indexing_package_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;_inde&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080540_add_indexing_to_packages_table--table=packages.php&#10;2023_02_23_080429_add_indexing_package_table--table=packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080429_add_indexing_package_table--table=packages.php&#10;_product&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;FdaF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;_listing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;database&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;helpers&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Helpers/helpers.php&#10;web&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;database.&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;Upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;Fda&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;fdas&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;ActiveProductListings&#9;null&#9;null&#10;rodu&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Ca&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;CardinalI&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;_products_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;boot&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FDAs&#9;null&#9;null&#10;2023_02_16_160132_create_f_d_a_s_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;Car&#9;null&#9;null&#10;RegisterC&#9;null&#9;null&#10;register&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/auth/register.blade.php&#10;bootstrap4&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FileCat&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/seeders/FileCategorySeeder.php&#10;_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_110634_create_auburn_pharmaceuticals_table.php" />
+    <property name="SearchEverywhereHistoryKey" value="uploadFileController&#9;FILE&#9;file://C:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;UploadF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;FDA&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;app.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/app.php&#10;composer&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/composer.json&#10;upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;_cardinal&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;CardinalHealths&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;ActiveProductListing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;FdaFIle&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;home&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/home.blade.php&#10;web.php&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;ProductPackageCombinations&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;FdaC&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;.env&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/.env&#10;ExportAllProduct&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;CardinalHealth&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_092054_create_cardinal_healths_table.php&#10;_products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;ProductPackageCombination&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_add_in&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;2023_02_23_123002_create_product_package_combinations_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php&#10;_packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_17_151125_create_packages_table.php&#10;_p&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;2023_02_23_080643_add_indexing_package_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080643_add_indexing_package_table.php&#10;_inde&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080540_add_indexing_to_packages_table--table=packages.php&#10;2023_02_23_080429_add_indexing_package_table--table=packages&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_23_080429_add_indexing_package_table--table=packages.php&#10;_product&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;FdaF&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;_listing&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_18_221049_create_active_product_listings_table.php&#10;database&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;helpers&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Helpers/helpers.php&#10;web&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/routes/web.php&#10;database.&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/config/database.php&#10;Upload&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/UploadFileController.php&#10;Fda&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Http/Controllers/FdaFileController.php&#10;fdas&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;ActiveProductListings&#9;null&#9;null&#10;rodu&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Ca&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;CardinalI&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/app/Imports/CardinalImport.php&#10;_products_&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_154506_create_products_table.php&#10;Products&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_01_21_151000_create_export_all_products_table.php&#10;boot&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FDAs&#9;null&#9;null&#10;2023_02_16_160132_create_f_d_a_s_table&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php&#10;Car&#9;null&#9;null&#10;RegisterC&#9;null&#9;null&#10;register&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/resources/views/auth/register.blade.php&#10;bootstrap4&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/public/assets/css/bootstrap4.css&#10;FileCat&#9;FILE&#9;file://E:/xampp/htdocs/excel-app/database/seeders/FileCategorySeeder.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../PointOfSale" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -621,17 +673,18 @@
       <workItem from="1678168265513" duration="5885000" />
       <workItem from="1678374291780" duration="2015000" />
       <workItem from="1679145052764" duration="69000" />
+      <workItem from="1679939211718" duration="903000" />
+      <workItem from="1680027772448" duration="288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230331000" />
+    <option name="totallyTimeSpent" value="231522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2170487" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2193646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -645,7 +698,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3294423" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" type="SLIDING" weight="0.4072633" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" type="SLIDING" visible="true" weight="0.46317512" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -671,13 +724,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/Package.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2023_02_16_160132_create_f_d_a_s_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -701,13 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
           <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="67" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/credentials2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -773,27 +812,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/excel-project-376818-15374600676d.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/credentials.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="7" selection-start-line="1" selection-end-line="1" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Downloads/excel-project-376818-15374600676d.json" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2023_02_23_123002_create_product_package_combinations_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -930,13 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="522" column="85" selection-start-line="522" selection-start-column="68" selection-end-line="522" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/all-files/partials/_txrade.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -958,20 +970,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5253">
+          <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
+          <folding>
+            <element signature="e#40#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/credentials.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/credentials2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/all-files/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="5729">
           <caret line="337" column="70" selection-start-line="337" selection-start-column="70" selection-end-line="337" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ODBCController.php">
+    <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="317" column="90" lean-forward="true" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
-          <folding>
-            <element signature="e#40#67#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="22" column="19" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="79" column="50" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
         </state>
       </provider>
     </entry>
