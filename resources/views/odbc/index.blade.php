@@ -73,15 +73,15 @@
                         if ($row['cardinal_price'] != '-') {
                             foreach ($row['cardinal_full'] as $key => $cardinal) {
                                 $cardinalFull .= '<tr>' .
-                                                    '<td>' . $cardinal['cin_ndc_upc1'] . '</td>' .
-                                                    '<td>' . $cardinal['trade_name_mfr'] . '</td>' .
-                                                    '<td>' . $cardinal['strength'] . '</td>' .
-                                                    '<td>' . $cardinal['from'] . '</td>' .
-                                                    '<td>' . $cardinal['size'] . '</td>' .
+                                                    '<td>' . $cardinal['fda_ndc'] . '</td>' .
+                                                    '<td>' . $cardinal['fda_name'] . '</td>' .
+                                                    '<td>' . $cardinal['fda_strength'] . '</td>' .
+                                                    '<td>' . $cardinal['fda_form'] . '</td>' .
+                                                    '<td>' . $cardinal['fda_count'] . '</td>' .
                                                     '<td>$' . $cardinal['invoice_cost'] . '</td>' .
                                                 '</tr>';
                             }
-                            $cardinalData = 'NDC:' . $row['cardinal_data']['cin_ndc_upc1'] . ' Name:' . $row['cardinal_data']['trade_name_mfr'] . ' Strength:' . $row['cardinal_data']['strength'] . ' Form:' . $row['cardinal_data']['from'] . ' Count:' . $row['cardinal_data']['size'] . ' Date update:' . \Carbon\Carbon::parse($row['cardinal_data']['created_at'])->format('d-M-Y');
+                            $cardinalData = 'NDC:' . $row['cardinal_data']['fda_ndc'] . ' Name:' . $row['cardinal_data']['fda_name'] . ' Strength:' . $row['cardinal_data']['fda_strength'] . ' Form:' . $row['cardinal_data']['fda_form'] . ' Count:' . $row['cardinal_data']['fda_count'] . ' Date update:' . \Carbon\Carbon::parse($row['cardinal_data']['created_at'])->format('d-M-Y');
                         }
                         if ($row['export_price'] != '-') {
                             foreach ($row['export_full'] as $key => $export) {
